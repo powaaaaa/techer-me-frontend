@@ -26,8 +26,8 @@ export const Eventlist: React.FC<Props> = ({}) => {
       <div className="flex flex-col items-start text-[16px] font-bold w-[100%]">
         <ul className="w-[100%]">
           {events.map((event) => (
-            <a href="">
-              <li>{event.Title}</li>
+            <a href="" className="w-[100%]">
+              <li className="w-[100%]">{event.Title}</li>
             </a>
           ))}
         </ul>
