@@ -1,12 +1,13 @@
 import { Sticker } from "@/components/Sticker";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
+import { Component, ComponentPropsWithoutRef } from "react";
 
 type Props = {
   src: string;
   times?: number;
   techerName: string;
-};
+} & ComponentPropsWithoutRef<"button">;
 
 const interval = cva("", {
   variants: {
@@ -20,11 +21,16 @@ const interval = cva("", {
   },
 });
 
-export const Techer: React.FC<Props> = ({ src, times, techerName }) => {
+export const Techer: React.FC<Props> = ({
+  src,
+  times,
+  techerName,
+  ...props
+}) => {
   const timesVariant = times && times > 1 ? true : false;
 
   return (
-    <div className="relative flex items-center">
+    <button className="relative flex items-center" {...props}>
       <div
         className={clsx(
           interval({ hasTimes: timesVariant }),
@@ -48,6 +54,6 @@ export const Techer: React.FC<Props> = ({ src, times, techerName }) => {
       </div>
 
       <p className="font-bold">{techerName}</p>
-    </div>
+    </button>
   );
 };
