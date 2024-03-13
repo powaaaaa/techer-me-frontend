@@ -4,8 +4,8 @@ import clsx from "clsx";
 
 type Props = {
   children: React.ReactNode;
-  color?: "primary" | "secondary";
-  variant?: "outlined" | "contained" | "text";
+  color?: "primary" | "secondary" | "transparent";
+  variant?: "outlined" | "contained";
 } & ComponentPropsWithoutRef<"button">;
 
 const style = cva("rounded font-bold", {
@@ -13,11 +13,11 @@ const style = cva("rounded font-bold", {
     color: {
       primary: "bg-black text-white",
       secondary: "bg-beige text-black",
+      transparent: "bg-transparent text-black",
     },
     variant: {
       outlined: "border-[1px] border-black",
       contained: "",
-      text: "bg-transparent",
     },
   },
   defaultVariants: {
