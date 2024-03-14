@@ -23,11 +23,9 @@ export const Checkbox: React.FC<Props> = ({ onCheckedChange, children }) => {
           className="w-[6.0vw] h-[6.0vw] border-solid border-[0.4vw] border-black rounded"
           onClick={handleClick}
         >
-          {checked && (
-            <CheckMark />
-          )}
+          {checked && <CheckMark />}
         </span>
-        <div className="px-[4vw] font-bold">{children}</div>
+        <div className="px-[4vw] text-2xl	 font-bold">{children}</div>
       </div>
     </>
   );
