@@ -1,13 +1,13 @@
-import { QRcode } from '.';
+import { QRcode } from ".";
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof QRcode> = {
   component: QRcode,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -15,5 +15,7 @@ export default meta;
 type Story = StoryObj<typeof QRcode>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    url: "https://www.google.co.jp/",
+  },
 };
