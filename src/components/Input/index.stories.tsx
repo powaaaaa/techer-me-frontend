@@ -1,9 +1,9 @@
-import { ModalContent } from ".";
+import { Input } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof ModalContent> = {
-  component: ModalContent,
+const meta: Meta<typeof Input> = {
+  component: Input,
   parameters: {
     layout: "centered",
   },
@@ -12,10 +12,10 @@ const meta: Meta<typeof ModalContent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ModalContent>;
+type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    children: "モーダルの中身",
+    message: "This is an error message.",
   },
 };

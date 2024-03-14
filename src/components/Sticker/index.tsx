@@ -1,18 +1,24 @@
-import Image from "next/image";
+import clsx from "clsx";
+import Image, { ImageProps } from "next/image";
 
 type Props = {
   src: string;
   size?: "sm" | "md" | "lg";
-};
+} & ImageProps;
 
-export const Sticker: React.FC<Props> = ({ src, size = "lg" }) => {
+export const Sticker: React.FC<Props> = ({
+  src,
+  size = "lg",
+  className,
+  ...props
+}) => {
   return (
     <Image
       src={src}
-      alt="sticker"
       width={size === "sm" ? 32 : size === "md" ? 80 : 240}
       height={size === "sm" ? 32 : size === "md" ? 80 : 240}
-      className="border-2 border-white rounded-full"
+      className={clsx("border-2 border-white rounded-full", className)}
+      {...props}
     />
   );
 };

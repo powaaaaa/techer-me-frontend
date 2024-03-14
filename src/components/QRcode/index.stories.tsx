@@ -1,9 +1,9 @@
-import { Button } from ".";
+import { QRcode } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof Button> = {
-  component: Button,
+const meta: Meta<typeof QRcode> = {
+  component: QRcode,
   parameters: {
     layout: "centered",
   },
@@ -12,11 +12,10 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof QRcode>;
 
 export const Default: Story = {
   args: {
-    children: "Button",
-    color: "primary",
+    url: "https://www.google.co.jp/",
   },
 };
