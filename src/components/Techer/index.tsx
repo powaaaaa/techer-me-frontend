@@ -1,7 +1,7 @@
 import { Sticker } from "@/components/Sticker";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
-import { Component, ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 type Props = {
   src: string;
