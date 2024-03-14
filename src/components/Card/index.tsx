@@ -1,10 +1,5 @@
-import { IonIcon } from "@ionic/react";
-import {
-  logoGithub,
-  logoLinkedin,
-  logoTwitter,
-  linkOutline,
-} from "ionicons/icons";
+import Image from "next/image";
+import { LinkIcon } from "../icons/Link";
 
 type Props = {
   handleName: string;
@@ -12,7 +7,7 @@ type Props = {
   events?: string[];
   github?: string;
   twitter?: string;
-  linkedin?: string;
+  discord?: string;
   website?: string[];
 };
 
@@ -22,7 +17,7 @@ export const Card: React.FC<Props> = ({
   events,
   github,
   twitter,
-  linkedin,
+  discord,
   website,
 }) => {
   return (
@@ -33,23 +28,20 @@ export const Card: React.FC<Props> = ({
             <div className=" font-bold text-[16px] py-[4px]">{handleName}</div>
             <div className=" text-[8px]">{organization}</div>
           </div>
-          <ul className="list-disc">
-            {events?.map((event) => (
-              <li className="text-[10px]">{event}</li>
-            ))}
-          </ul>
         </div>
         <div>
           {github ? (
             <div
               className="flex 
-            items-center
+            items-center p-2
             "
             >
-              <IonIcon
-                icon={logoGithub}
-                className="h-[32px] w-[32px]"
-              ></IonIcon>
+              <Image
+                src="/github-mark.png"
+                alt="github_icon"
+                width="32"
+                height="32"
+              />
               <a href={github} className="pl-[20px] text-[12px]">
                 {github}
               </a>
@@ -58,49 +50,59 @@ export const Card: React.FC<Props> = ({
           {twitter ? (
             <div
               className="flex 
-            items-center
+            items-center p-2
             "
             >
-              <IonIcon
-                icon={logoTwitter}
-                className="h-[32px] w-[32px]"
-              ></IonIcon>
+              <div className="ml-1">
+                <Image
+                  src="/logo-black.png"
+                  alt="x_icon"
+                  width="24"
+                  height="24"
+                />
+              </div>
+
               <a href={twitter} className="pl-[20px] text-[12px]">
                 {twitter}
               </a>
             </div>
           ) : null}
-          {linkedin ? (
+          {discord ? (
             <div
               className="flex 
-            items-center
+            items-center p-2
             "
             >
-              <IonIcon
-                icon={logoLinkedin}
-                className="h-[32px] w-[32px]"
-              ></IonIcon>
-              <a href={linkedin} className="pl-[20px] text-[12px]">
-                {linkedin}
+              <Image
+                src="/discord-mark-black.png"
+                alt="Discord_icon"
+                width="32"
+                height="32"
+              />
+
+              <a href={discord} className="pl-[20px] text-[12px]">
+                {discord}
               </a>
             </div>
           ) : null}
-          {website?.map((site) => (
+          {/* {website?.map((site) => (
             <div
               className="flex 
             items-center
             "
             >
-              <IonIcon
-                icon={linkOutline}
-                className="h-[32px] w-[32px]"
-              ></IonIcon>
+              <LinkIcon />
               <a href={site} className="pl-[20px] text-[12px]">
                 {site}
               </a>
             </div>
-          ))}
+          ))} */}
         </div>
+        <ul className="list-disc">
+          {events?.map((event) => (
+            <li className="text-[10px]">{event}</li>
+          ))}
+        </ul>
       </div>
     </>
   );
