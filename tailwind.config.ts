@@ -23,13 +23,18 @@ const config: Config = {
         white: "#FFFFFF",
         red: "#E30000",
       },
-      fontFamily: {
-        NotoSansJP: ["var(--font-NotoSansJP)"],
-        RampartOne: ["var(--font-RampartOne)"],
+      fontSize: {
+        xxs: "12vw",
+        xs: "14vw",
+        middle: "50px",
+        big: "80px",
       },
       fontFamily: {
         NotoSansJP: ["var(--font-NotoSansJP)"],
         RampartOne: ["var(--font-RampartOne)"],
+      },
+      screens: {
+        pc: "768px",
       },
     },
   },
