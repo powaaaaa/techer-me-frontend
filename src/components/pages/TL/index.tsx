@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import { PostType } from "@/components/Post";
 import { PostInput } from "@/components/PostInput";
 import { PostList } from "@/components/PostList";
@@ -11,11 +12,18 @@ type Props = {
 export const TL: React.FC<Props> = ({ tlTitle, posts }) => {
   return (
     <>
-      <header className="flex">
+      <header className="flex justify-between pb-8">
         <button>
           <ArrowBack />
         </button>
         <p className="font-bold">{tlTitle}</p>
+        <Button
+          className="py-px px-2 text-[10px]"
+          color="secondary"
+          variant="outlined"
+        >
+          退出する
+        </Button>
       </header>
 
       <main className="px-6">
