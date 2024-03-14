@@ -36,10 +36,6 @@ const config: Config = {
       screens: {
         pc: "768px",
       },
-      fontFamily: {
-        NotoSansJP: ["var(--font-NotoSansJP)"],
-        RampartOne: ["var(--font-RampartOne)"],
-      },
     },
   },
   plugins: [],
