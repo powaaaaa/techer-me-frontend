@@ -6,6 +6,7 @@ export type PostType = {
   date: string;
   time: string;
   content: string;
+  image?: string[];
 };
 
 type Props = {
