@@ -32,7 +32,7 @@ export const Card: React.FC<Props> = ({
         <div>
           {github ? (
             <div
-              className="flex 
+              className="flex
             items-center p-2
             "
             >
@@ -49,7 +49,7 @@ export const Card: React.FC<Props> = ({
           ) : null}
           {twitter ? (
             <div
-              className="flex 
+              className="flex
             items-center p-2
             "
             >
@@ -69,7 +69,7 @@ export const Card: React.FC<Props> = ({
           ) : null}
           {discord ? (
             <div
-              className="flex 
+              className="flex
             items-center p-2
             "
             >
@@ -87,7 +87,7 @@ export const Card: React.FC<Props> = ({
           ) : null}
           {/* {website?.map((site) => (
             <div
-              className="flex 
+              className="flex
             items-center
             "
             >
