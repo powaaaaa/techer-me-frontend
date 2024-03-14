@@ -20,5 +20,14 @@ export default meta;
 type Story = StoryObj<typeof PostInput>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    countLimit: 500,
+    count: 10,
+    value: {
+      id: "",
+      date: "",
+      time: "",
+      content: "",
+    },
+  },
 };
