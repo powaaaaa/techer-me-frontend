@@ -26,6 +26,8 @@ const config: Config = {
       fontSize: {
         xxs: "12vw",
         xs: "14vw",
+        middle: "50px",
+        big: "80px",
       },
       fontFamily: {
         NotoSansJP: ["var(--font-NotoSansJP)"],
