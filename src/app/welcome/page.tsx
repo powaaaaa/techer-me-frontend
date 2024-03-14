@@ -1,3 +1,5 @@
+// Welcome.js
+
 import { Button } from "@/components/Button";
 import { TecherME_Logo } from "@/components/TecherME_Logo";
 import Image from "next/image";
@@ -18,26 +20,26 @@ export default function Welcome() {
           <TecherME_Logo />
         </div>
 
-        <div className="flex justify-center items-center">
-          <div>
+        <div className="relative p-6">
+          <div className="relative justify-center items-center">
             <Image
               src={"/PC_icon.png"}
               alt={"PC_model"}
               width={240}
               height={240}
+              className="absolute top-0 @screen pc:w-90 @screen pc:ml-[35vw] "
             />
-          </div>
-          <div className="mt-40">
             <Image
               src={"/smartphone_picture.png"}
               alt={"smartphone"}
-              width={160}
-              height={160}
+              width={120}
+              height={120}
+              className="absolute top-40 left-[180px] @screen pc:w-34 @screen pc:ml-[38vw]"
             />
           </div>
         </div>
 
-        <div className="flex flex-col justify-center items-center gap-4 mt-16">
+        <div className="flex flex-col justify-center items-center gap-4 mt-[400px]">
           <Button className="py-2 px-4 text-xl flex gap-4 items-center">
             <Image
               src={"/github-mark-white.png"}
