@@ -1,9 +1,9 @@
-import { ModalContent } from ".";
+import { Checkbox } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof ModalContent> = {
-  component: ModalContent,
+const meta: Meta<typeof Checkbox> = {
+  component: Checkbox,
   parameters: {
     layout: "centered",
   },
@@ -12,10 +12,10 @@ const meta: Meta<typeof ModalContent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ModalContent>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
   args: {
-    children: "モーダルの中身",
+    children: "children",
   },
 };
