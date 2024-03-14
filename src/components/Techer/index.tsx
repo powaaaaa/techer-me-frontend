@@ -13,7 +13,7 @@ const interval = cva("", {
   variants: {
     hasTimes: {
       false: "pr-[52px]",
-      true: "pr-7",
+      true: "pr-[31px]",
     },
   },
   defaultVariants: {
