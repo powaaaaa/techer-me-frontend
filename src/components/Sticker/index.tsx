@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Image, { ImageProps } from "next/image";
-import { Component } from "react";
 
 type Props = {
   src: string;

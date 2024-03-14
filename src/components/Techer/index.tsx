@@ -1,7 +1,13 @@
 import { Sticker } from "@/components/Sticker";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
-import { Component, ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
+
+export type TecherType = {
+  image: string;
+  name: string;
+  times: number;
+};
 
 type Props = {
   src: string;
