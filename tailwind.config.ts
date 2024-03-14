@@ -23,10 +23,6 @@ const config: Config = {
         white: "#FFFFFF",
         red: "#E30000",
       },
-      fontSize: {
-        xxs: "12vw",
-        xs: "14vw",
-      },
       fontFamily: {
         NotoSansJP: ["var(--font-NotoSansJP)"],
         RampartOne: ["var(--font-RampartOne)"],
