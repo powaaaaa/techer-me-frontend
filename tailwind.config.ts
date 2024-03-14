@@ -27,10 +27,6 @@ const config: Config = {
         xxs: "12vw",
         xs: "14vw",
       },
-      fontFamily: {
-        NotoSansJP: ["var(--font-NotoSansJP)"],
-        RampartOne: ["var(--font-RampartOne)"],
-      },
     },
   },
   plugins: [],
