@@ -24,8 +24,6 @@ const config: Config = {
         red: "#E30000",
       },
       fontSize: {
-        xxs: "12vw",
-        xs: "14vw",
         middle: "50px",
         big: "80px",
       },
