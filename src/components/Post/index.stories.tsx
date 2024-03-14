@@ -21,8 +21,11 @@ type Story = StoryObj<typeof Post>;
 
 export const Default: Story = {
   args: {
-    date: "3/12",
-    time: "14:55",
-    content: "Hellooooooooooooooooo, worrrrrrrrrrrrrrld!",
+    post: {
+      id: "1",
+      date: "3/12",
+      time: "14:55",
+      content: "Hellooooooooooooooooo, worrrrrrrrrrrrrrld!",
+    },
   },
 };
