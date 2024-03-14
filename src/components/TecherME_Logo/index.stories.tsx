@@ -8,16 +8,6 @@ const meta: Meta<typeof TecherME_Logo> = {
   parameters: {
     layout: "centered",
   },
-  decorators: [
-    (Story) => (
-      <RootLayout>
-        <div className="w-full h-full flex justify-center items-center">
-
-        <Story />
-        </div>
-      </RootLayout>
-    ),
-  ],
   tags: ["autodocs"],
 };
 
