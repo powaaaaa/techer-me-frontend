@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Sticker } from "@/components/Sticker";
 import { TecherType, StickerList } from "../StickerList";
 import { fetchUserData, getData } from "./hooks/fetchdata";
 import { firebaseConfig } from "@/lib/firebase/firebase";
@@ -165,6 +166,12 @@ export const Top: React.FC<Props> = ({}) => {
             <StickerList
               techers={testtecher}
               handleShowPreview={handleShowPreview}
+            />
+          </div>
+          <div className="flex flex-col items-center my-5">
+            <Sticker
+              src="https://avatars.githubusercontent.com/u/88587703?s=48&v=4"
+              alt="test"
             />
           </div>
         </div>
