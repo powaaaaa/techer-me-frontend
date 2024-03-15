@@ -19,7 +19,7 @@ export const StickerList: React.FC<Props> = ({
     };
 
   return (
-    <div>
+    <div className=" w-[300px]">
       {techers.map((techer, i) => (
         <div key={i}>
           <Techer
