@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import jsQR from "jsqr";
 
-export default function Home() {
+export const CameraScan: React.FC = ({}) =>  {
   const videoRef: any = useRef(null);
   const canvasRef: any = useRef(null);
   const canvasContextRef: any = useRef(null);
