@@ -5,7 +5,7 @@ import { getDatabase, ref, query, get } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 export type PostType = {
-  id: number;
+  id: string;
   date: string;
   time: string;
   content: string;

@@ -65,7 +65,7 @@ export const useTLPage = ({
   const [inputPost, setInputPost] = useState<PostType>(defaultPost);
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [repliedPost, setRepliedPost] = useState<string>("Hello, world!");
-  const [replyId, setReplyId] = useState<number>(0);
+  const [replyId, setReplyId] = useState<string>("");
 
   const handleBackPage = () => {
     console.log("back");
@@ -103,7 +103,7 @@ export const useTLPage = ({
       setIsReplying(false);
     }
     //postの長さを取得
-    const num = posts.length + 1;
+    const num = `${posts.length + 1}`;
     //日時を取得
     const date = new Date();
     //月の取得
