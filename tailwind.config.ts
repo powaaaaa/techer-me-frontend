@@ -27,10 +27,6 @@ const config: Config = {
         middle: "50px",
         big: "80px",
       },
-      fontFamily: {
-        NotoSansJP: ["var(--font-NotoSansJP)"],
-        RampartOne: ["var(--font-RampartOne)"],
-      },
       screens: {
         pc: "768px",
       },
