@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 import Styles from "./index.module.css";
-import { Calender } from "../icons/calender";
+import { Calender } from "../../icons/calender";
 
 type Props = {
   label: string;

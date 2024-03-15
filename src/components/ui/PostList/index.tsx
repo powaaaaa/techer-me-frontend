@@ -1,5 +1,5 @@
 import { MouseEvent } from "react";
-import { Post, PostType } from "@/components/Post";
+import { Post, PostType } from "@/components/ui/Post";
 
 type Props = {
   posts: PostType[];
@@ -15,8 +15,8 @@ export const PostList: React.FC<Props> = ({ posts, handleReply }) => {
   return (
     <div>
       {posts.map((post, i) => (
-        <div>
-          <Post key={post.id} post={post} onClick={handleClick(post)} />
+        <div key={post.id}>
+          <Post post={post} onClick={handleClick(post)} />
           {i < posts.length - 1 && (
             <div className="h-[0.4px] my-[10px] bg-grey"></div>
           )}

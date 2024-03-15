@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { ImageIcon } from "@/components/icons/ImageIcon";
-import { SendIcon } from "../icons/SendIcon";
+import { SendIcon } from "../../icons/SendIcon";
 import { PostType } from "../Post";
 
 type Props = {

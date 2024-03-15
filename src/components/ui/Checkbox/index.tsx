@@ -1,6 +1,6 @@
 "use client";
 import { ComponentPropsWithoutRef } from "react";
-import { CheckMark } from "../icons/CheckMark";
+import { CheckMark } from "../../icons/CheckMark";
 
 type Props = {
   label: string;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export type EventInfoType = {
   name: string;
@@ -31,6 +32,7 @@ const demoEvent: EventInfoType = {
 const demoIcon = "https://avatars.githubusercontent.com/u/88587703?s=48&v=4";
 
 export const useJoinPage = (): UseJoinPage => {
+  const router = useRouter();
   //NOTE:  このdemoはbackendと繋げられたら消す
   const [userIcon, setUserIcon] = useState<string>(demoIcon);
   const [event, setEvent] = useState<EventInfoType>(demoEvent);
@@ -38,6 +40,7 @@ export const useJoinPage = (): UseJoinPage => {
   const handleJoinEvent = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("join");
+    router.push(`/top`);
   };
 
   return {

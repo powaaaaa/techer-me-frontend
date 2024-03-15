@@ -1,14 +1,14 @@
-import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
-import { Input } from "@/components/Input";
-import { TecherME_Logo } from "@/components/TecherME_Logo";
-import { Textarea } from "@/components/Textarea";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
+import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
+import { Textarea } from "@/components/ui/Textarea";
 import { Twitter } from "@/components/icons/twitterLogo";
 import Image from "next/image";
 
 type Props = {};
 
-export const EditProfile: React.FC<Props> = ({}) => {
+export const EditProfilePage: React.FC<Props> = ({}) => {
   return (
     <div className="p-1">
       <div className="flex gap-[38vw] ">

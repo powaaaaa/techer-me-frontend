@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { EventInfoType } from "../../Join/hooks";
+import { useRouter } from "next/navigation";
 
 export type InputEventType = EventInfoType;
 
@@ -28,6 +29,7 @@ export const useOwnerPage = ({
 }: {
   maxLength: number;
 }): UseOwnerPage => {
+  const router = useRouter();
   const [userIcon, setUserIcon] = useState<string>(demoIcon);
   const [inputEvent, setInputEvent] = useState<InputEventType>(defaultEvent);
 
@@ -65,6 +67,8 @@ export const useOwnerPage = ({
   const handleCreateQR = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("input: ", inputEvent);
+
+    router.push("/qr");
   };
 
   return {

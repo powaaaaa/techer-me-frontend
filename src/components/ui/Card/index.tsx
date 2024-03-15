@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LinkIcon } from "../icons/Link";
+import { LinkIcon } from "../../icons/Link";
 
 type Props = {
   handleName: string;

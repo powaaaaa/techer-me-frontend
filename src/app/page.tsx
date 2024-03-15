@@ -1,25 +1,7 @@
 "use client";
-import { TLPage } from "@/components/pages/TL";
-import { getDatabase } from "firebase/database";
-import { GithubAuthProvider } from "firebase/auth";
-import { getAuth, signInWithPopup } from "firebase/auth";
-import { firebaseConfig } from "@/lib/firebase/firebase";
-import { initializeApp } from "firebase/app";
 
-const app = initializeApp(firebaseConfig);
+import { WelcomePage } from "@/components/pages/welcome";
 
-//githab認証
-async function githubLogin() {
-  const provider = new GithubAuthProvider();
-  const auth = getAuth();
-  signInWithPopup(auth, provider);
-}
+const Welcome: React.FC = () => <WelcomePage />;
 
-export default function Home() {
-  return (
-    <>
-      <TLPage />
-      <button onClick={githubLogin}>login</button>
-    </>
-  );
-}
+export default Welcome;

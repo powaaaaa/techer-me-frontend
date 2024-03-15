@@ -1,6 +1,6 @@
-import { Button } from "@/components/Button";
-import { QRcode } from "@/components/QRcode";
-import { TecherME_Logo } from "@/components/TecherME_Logo";
+import { Button } from "@/components/ui/Button";
+import { QRcode } from "@/components/ui/QRcode";
+import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { useQRPage } from "./hooks";
 
 export const QRPage: React.FC = ({}) => {

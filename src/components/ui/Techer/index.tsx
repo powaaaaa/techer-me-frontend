@@ -1,4 +1,4 @@
-import { Sticker } from "@/components/Sticker";
+import { Sticker } from "@/components/ui/Sticker";
 import { cva } from "class-variance-authority";
 import clsx from "clsx";
 import { ComponentPropsWithoutRef } from "react";
