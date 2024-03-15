@@ -8,6 +8,11 @@ const meta: Meta<typeof OwnerPage> = {
     layout: "centered",
   },
   tags: ["autodocs"],
+  render: (args) => (
+    <div className="w-[375px]">
+      <OwnerPage {...args} />
+    </div>
+  ),
 };
 
 export default meta;

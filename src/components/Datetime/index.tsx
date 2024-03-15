@@ -1,28 +1,26 @@
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import Styles from "./index.module.css";
+import { Calender } from "../icons/Calender";
 
 type Props = {
-  setDatetime: (datetime: Date) => void;
+  label: string;
+} & ComponentPropsWithoutRef<"input">;
 
-  children: ReactNode;
-};
-
-export const Datetime: React.FC<Props> = ({ setDatetime, children }) => {
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const date = new Date(e.target.value);
-    setDatetime(date);
-  };
-
+export const Datetime: React.FC<Props> = ({ label, ...props }) => {
   return (
-    <>
-      <div className="flex w-[85vw] px-[20px] py-[10px] justify-between border-solid border-[0.4px] border-[#000000] rounded-[4px]">
-        <div className=" font-bold">{children}</div>
+    <div className="flex w-full px-4 py-1 justify-between items-center bg-white border-[0.4px] border-black rounded">
+      <span className="text-xs font-bold">{label}</span>
+
+      <div className="flex items-center">
+        <span className="pr-2">
+          <Calender />
+        </span>
         <input
           type="datetime-local"
-          onChange={handleDateChange}
-          className={`${Styles.datetime} font-bold`}
+          className={`${Styles.iconDel} relative text-sm font-bold focus:outline-none`}
+          {...props}
         />
       </div>
-    </>
+    </div>
   );
 };
