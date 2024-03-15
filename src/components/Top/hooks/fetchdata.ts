@@ -55,10 +55,10 @@ export const getData = async (token: string) => {
   }
 };
 
-export const fetchUserData = async (user_id: string) => {
+export const fetchUserData = async (user_id: string, token: string) => {
   //https://server-u7kyixk36q-an.a.run.app/exchangesへuser_id:stringを渡すことでUserDataを取得
   const response = await fetch(
-    `https://server-u7kyixk36q-an.a.run.app/exchanges?user_id=${user_id}`,
+    `https://server-u7kyixk36q-an.a.run.app/users/${user_id}`,
     {
       headers: {
         "Content-Type": "application/json",
