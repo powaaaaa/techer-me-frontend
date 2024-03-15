@@ -1,9 +1,11 @@
-export const calender = () => {
+export const Calender = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="ionicon"
       viewBox="0 0 512 512"
+      width={16}
+      height={16}
     >
       <rect
         x="48"

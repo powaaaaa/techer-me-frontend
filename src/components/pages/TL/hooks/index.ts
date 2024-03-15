@@ -27,6 +27,7 @@ type UseTLPage = {
   Postfetch: () => void;
 };
 
+//NOTE:  このdemoはbackendと繋げられたら消す
 const demo: PostType[] = [
   {
     id: "1",
@@ -47,6 +48,7 @@ const demo: PostType[] = [
     content: "Hello, world!",
   },
 ];
+
 const defaultPost: PostType = {
   id: "",
   date: "",
@@ -61,6 +63,7 @@ export const useTLPage = ({
 }): UseTLPage => {
   const [count, setCount] = useState(countLimit);
   const [tlTitle, setTlTitle] = useState<string>("Hack U 2024 Osaka");
+  //NOTE:  このdemoはbackendと繋げられたら消す
   const [posts, setPosts] = useState<PostType[]>(demo);
   const [inputPost, setInputPost] = useState<PostType>(defaultPost);
   const [isReplying, setIsReplying] = useState<boolean>(false);
