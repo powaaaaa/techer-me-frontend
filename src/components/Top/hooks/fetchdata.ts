@@ -48,7 +48,7 @@ export const getData = async (token: string) => {
     }
     const jsonData: TecherData[] = await response.json();
     //refactTecherDataを使ってTecherTypeの配列を作成
-    const TechersType = refactTecherData(jsonData);
+    const TechersType = refactTecherData(jsonData, token);
     return TechersType;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -73,7 +73,7 @@ export const fetchUserData = async (user_id: string, token: string) => {
   return jsonData;
 };
 
-export const refactTecherData = (TechersData: TecherData[]) => {
+export const refactTecherData = (TechersData: TecherData[], token: string) => {
   //同じuser_idの無い配列を作成
   const uniqueTechersData = TechersData.filter(
     (techer, i, self) =>
@@ -92,7 +92,7 @@ export const refactTecherData = (TechersData: TecherData[]) => {
   //uniqueTechersDataのuser_idからUserDataの配列を作成
   const UserData = Techers.map((techer) => {
     //fetchUserDataを使ってUserDataを取得
-    const user: UserData = fetchUserData(techer.user_id);
+    const user: UserData = fetchUserData(techer.user_id, token);
     //UserDataの画像をと名前を取得
     const image = user.image_url;
     const name = user.name;
