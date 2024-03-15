@@ -1,9 +1,9 @@
-import { ModalContent } from ".";
+import { Textarea } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof ModalContent> = {
-  component: ModalContent,
+const meta: Meta<typeof Textarea> = {
+  component: Textarea,
   parameters: {
     layout: "centered",
   },
@@ -12,10 +12,10 @@ const meta: Meta<typeof ModalContent> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ModalContent>;
+type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
   args: {
-    children: "モーダルの中身",
+    maxStringLength: 1000,
   },
 };
