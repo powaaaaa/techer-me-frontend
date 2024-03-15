@@ -1,6 +1,5 @@
-import { StickerPreview } from '.';
-
 import type { Meta, StoryObj } from '@storybook/react';
+import { StickerPreview } from '.';
 
 const meta: Meta<typeof StickerPreview> = {
   component: StickerPreview,
