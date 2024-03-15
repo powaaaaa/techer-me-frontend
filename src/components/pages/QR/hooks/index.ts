@@ -1,7 +1,4 @@
 import { useRef, useState } from "react";
-import QRCode from "qrcode";
-import { pdf } from "@react-pdf/renderer";
-import { QrPdf } from "./pdf";
 
 type UseQRPage = {
   PDFRef: React.RefObject<HTMLDivElement>;
