@@ -3,24 +3,10 @@ import { TLPage } from "@/components/pages/TL";
 import { getDatabase } from "firebase/database";
 import { GithubAuthProvider } from "firebase/auth";
 import { getAuth, signInWithPopup } from "firebase/auth";
-
+import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAVwW8cd7jzpJpKsgYcps39gkMFcIaBXJc",
-  authDomain: "hacku-osaka2024.firebaseapp.com",
-  databaseURL:
-    "https://hacku-osaka2024-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "hacku-osaka2024",
-  storageBucket: "hacku-osaka2024.appspot.com",
-  messagingSenderId: "827074277133",
-  appId: "1:827074277133:web:1067175c6aff6c70e70a44",
-  measurementId: "G-VV12X91GVK",
-};
-
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const auth = getAuth();
 
 //githab認証
 async function githubLogin() {

@@ -3,7 +3,6 @@ import { ArrowUndo } from "@/components/icons/ArrowUndo";
 import { ComponentPropsWithoutRef, useEffect, useState } from "react";
 import { getDatabase, ref, query, get } from "firebase/database";
 import { getAuth } from "firebase/auth";
-import { useTLPage } from "../pages/TL/hooks";
 
 export type PostType = {
   id: number;

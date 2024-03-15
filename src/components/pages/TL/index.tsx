@@ -32,6 +32,7 @@ export const TLPage: React.FC = () => {
   useEffect(() => {
     const db = getDatabase();
     const messageRef = ref(db, "message/");
+    console.log("messageRef", messageRef);
     onValue(messageRef, (snapshot) => {
       Postfetch();
     });

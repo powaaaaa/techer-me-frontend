@@ -5,8 +5,6 @@ import {
   getDatabase,
   ref,
   push,
-  onChildAdded,
-  get,
   query,
   orderByChild,
   limitToLast,
@@ -67,7 +65,7 @@ export const useTLPage = ({
   const [inputPost, setInputPost] = useState<PostType>(defaultPost);
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [repliedPost, setRepliedPost] = useState<string>("Hello, world!");
-  const [replyId, setReplyId] = useState<number>();
+  const [replyId, setReplyId] = useState<number>(0);
 
   const handleBackPage = () => {
     console.log("back");
@@ -97,6 +95,7 @@ export const useTLPage = ({
   };
 
   const handlePostSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("send");
     const auth = getAuth();
     const db = getDatabase();
     e.preventDefault();
@@ -115,22 +114,38 @@ export const useTLPage = ({
     const hour = date.getHours();
     //分の取得
     const minute = date.getMinutes();
-    const sendData: PostType = {
-      id: num,
-      date: `${month}/${day}`,
-      time: `${hour}:${minute}`,
-      content: inputPost.content,
-      reply: replyId,
-    };
-    //リアルタイムデータベースに書き込む
-    try {
-      const dbRef = ref(db, `events/test/messages`);
-      await push(dbRef, sendData);
-      setInputPost(defaultPost);
-    } catch (error) {
-      console.error("Error adding document: ", error);
-    }
+    if (isReplying === false) {
+      const sendData = {
+        id: num,
+        date: `${month}/${day}`,
+        time: `${hour}:${minute}`,
+        content: inputPost.content,
+      };
 
+      try {
+        const dbRef = ref(db, `events/test/messages`);
+        await push(dbRef, sendData);
+        setInputPost(defaultPost);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    } else {
+      const sendData = {
+        id: num,
+        date: `${month}/${day}`,
+        time: `${hour}:${minute}`,
+        content: inputPost.content,
+        reply: replyId,
+      };
+      try {
+        const dbRef = ref(db, `events/test/messages`);
+        await push(dbRef, sendData);
+        setInputPost(defaultPost);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    }
+    //リアルタイムデータベースに書き込む
     setCount(countLimit);
   };
 
