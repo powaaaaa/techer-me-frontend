@@ -73,26 +73,22 @@ export const fetchUserData = async (user_id: string, token: string) => {
   return jsonData;
 };
 
-export const refactTecherData = (TechersData: TecherData[], token: string) => {
+export const refactTecherData = async (TechersData: TecherData[], token: string) => {
   //同じuser_idの無い配列を作成
   const uniqueTechersData = TechersData.filter(
     (techer, i, self) =>
       self.findIndex((t) => t.user_id === techer.user_id) === i
   );
   //uniqueTechersDataの重複した回数の配列を作成
-  const Techers = uniqueTechersData.map((techer) => {
-    const times = TechersData.filter(
-      (t) => t.user_id === techer.user_id
-    ).length;
-    return {
-      user_id: techer.user_id,
-      times,
-    };
-  });
+  const Techers = uniqueTechersData.map(techer => ({
+    user_id: techer.user_id,
+    times: TechersData.filter(t => t.user_id === techer.user_id).length,
+  }));
   //uniqueTechersDataのuser_idからUserDataの配列を作成
-  const UserData = Techers.map((techer) => {
     //fetchUserDataを使ってUserDataを取得
-    const user: UserData = fetchUserData(techer.user_id, token);
+  const usersData = await Promise.all(
+    Techers.map(techer => fetchUserData(techer.user_id, token))
+  );
     //UserDataの画像をと名前を取得
     const image = user.image_url;
     const name = user.name;
@@ -104,10 +100,11 @@ export const refactTecherData = (TechersData: TecherData[], token: string) => {
   //TecherTypeの配列を作成
   const TechersType = UserData.map((user, i) => {
     return {
-      image: user.image,
+      image: user.image_url,
       name: user.name,
       times: Techers[i].times,
     };
   });
+
   return TechersType;
 };
