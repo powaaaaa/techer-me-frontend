@@ -13,6 +13,27 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        black: {
+          DEFAULT: "#212121",
+          lighter: "#757575",
+        },
+        grey: "#F5F5F5",
+        beige: "#FEFBF8",
+        white: "#FFFFFF",
+        red: "#E30000",
+      },
+      fontSize: {
+        middle: "50px",
+        big: "80px",
+      },
+      fontFamily: {
+        NotoSansJP: ["var(--font-NotoSansJP)"],
+        RampartOne: ["var(--font-RampartOne)"],
+      },
+      screens: {
+        pc: "768px",
+      },
     },
   },
   plugins: [],
