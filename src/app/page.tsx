@@ -1,10 +1,40 @@
 "use client";
 import { TLPage } from "@/components/pages/TL";
-import Image from "next/image";
+import { getDatabase } from "firebase/database";
+import { GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup } from "firebase/auth";
+
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAVwW8cd7jzpJpKsgYcps39gkMFcIaBXJc",
+  authDomain: "hacku-osaka2024.firebaseapp.com",
+  databaseURL:
+    "https://hacku-osaka2024-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "hacku-osaka2024",
+  storageBucket: "hacku-osaka2024.appspot.com",
+  messagingSenderId: "827074277133",
+  appId: "1:827074277133:web:1067175c6aff6c70e70a44",
+  measurementId: "G-VV12X91GVK",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const auth = getAuth();
+
+//githab認証
+async function githubLogin() {
+  const provider = new GithubAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider);
+}
 
 export default function Home() {
   return (
-    <TLPage />
+    <>
+      <TLPage />
+      <button onClick={githubLogin}>login</button>
+    </>
     // <main className="flex min-h-screen flex-col items-center justify-between p-24">
     //   <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
     //     <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">

@@ -1,5 +1,18 @@
 import { PostType } from "@/components/Post";
 import { useState } from "react";
+import { getAuth } from "firebase/auth";
+import {
+  getDatabase,
+  ref,
+  push,
+  onChildAdded,
+  get,
+  query,
+  orderByChild,
+  limitToLast,
+  onValue,
+  set,
+} from "firebase/database";
 
 type UseTLPage = {
   tlTitle: string;
@@ -13,6 +26,7 @@ type UseTLPage = {
   handleTlExit: () => void;
   handlePostChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleReply: (e: React.MouseEvent<HTMLButtonElement>, post: PostType) => void;
+  Postfetch: () => void;
 };
 
 const demo: PostType[] = [
@@ -80,15 +94,66 @@ export const useTLPage = ({
     });
   };
 
-  const handlePostSend = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePostSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    const auth = getAuth();
+    const db = getDatabase();
     e.preventDefault();
     if (isReplying) {
       setIsReplying(false);
     }
+    //githubのidを取得
+    const userName: any = auth.currentUser?.uid;
+    //日時を取得
+    const date = new Date();
+    //月の取得
+    const month = date.getMonth() + 1;
+    //日の取得
+    const day = date.getDate();
+    //時間の取得
+    const hour = date.getHours();
+    //分の取得
+    const minute = date.getMinutes();
+    const sendData: PostType = {
+      id: userName,
+      date: `${month}/${day}`,
+      time: `${hour}:${minute}`,
+      content: inputPost.content,
+    };
+    //リアルタイムデータベースに書き込む
+    try {
+      const dbRef = ref(db, `events/test/messages`);
+      await push(dbRef, sendData);
+      setInputPost(defaultPost);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
 
-    console.log("send", inputPost);
-    setInputPost(defaultPost);
     setCount(countLimit);
+  };
+
+  const Postfetch = () => {
+    try {
+      const db = getDatabase();
+      const dbRef = ref(db, `events/test/messages`);
+      const q = query(dbRef, orderByChild("date"), limitToLast(10));
+      onValue(q, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        if (data) {
+          const posts = Object.keys(data).map((key) => {
+            return {
+              id: key,
+              date: data[key].date,
+              time: data[key].time,
+              content: data[key].content,
+            };
+          });
+          setPosts(posts);
+        }
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   };
 
   return {
@@ -103,5 +168,6 @@ export const useTLPage = ({
     handleReply,
     handlePostChange,
     handlePostSend,
+    Postfetch,
   };
 };
