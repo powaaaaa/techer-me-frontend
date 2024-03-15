@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Sticker } from "@/components/Sticker";
-import { TecherType } from "../Techer";
-import { StickerList } from "../StickerList";
+import { Sticker } from "@/components/ui/Sticker";
+import { TecherType } from "@/components/ui/Techer";
+import { StickerList } from "@/components/ui/StickerList";
 import { getData } from "./hooks/fetchdata";
 import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import { Button } from "../Button";
+import { Button } from "@/components/ui/Button";
 
 type Props = {};
 
