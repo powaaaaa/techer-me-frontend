@@ -24,7 +24,7 @@ export const OwnerPage: React.FC = ({}) => {
   return (
     <div className="px-6 font-bold">
       <header className="relative flex pt-12 pb-7">
-        <TecherME_Logo className="absolute top-[6px] left-4" />
+        <TecherME_Logo className="absolute top-[6px] left-[0.5vw]" />
         <Sticker
           src={userIcon}
           alt="userIcon"
