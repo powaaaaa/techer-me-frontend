@@ -1,6 +1,7 @@
 .textbox {
   position: relative;
   width: 100%;
+  /* min-height: 220px; */
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
