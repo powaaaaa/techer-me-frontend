@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { ComponentPropsWithoutRef } from "react";
 
 export type TecherType = {
+  id: string;
   image: string;
   name: string;
   times: number;

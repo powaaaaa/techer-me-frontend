@@ -8,6 +8,7 @@ import { useOwnerPage } from "./hooks";
 import { Input } from "@/components/ui/Input";
 import { Datetime } from "@/components/ui/Datetime";
 import { ArrowDown } from "@/components/icons/ArrowDown";
+import Link from "next/link";
 
 export const OwnerPage: React.FC = ({}) => {
   const {
@@ -31,9 +32,9 @@ export const OwnerPage: React.FC = ({}) => {
           size="sm"
           className="absolute top-[6px] right-4"
         />
-        <button onClick={handleBackPage}>
+        <Link href={"/qrScan"}>
           <ArrowBack />
-        </button>
+        </Link>
         <p className="mx-auto">新規イベントタグの作成</p>
       </header>
 

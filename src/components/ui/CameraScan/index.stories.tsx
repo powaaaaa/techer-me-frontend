@@ -1,13 +1,13 @@
-import { CameraScan } from '.';
+import { CameraScan } from ".";
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof CameraScan> = {
   component: CameraScan,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 };
 
 export default meta;
