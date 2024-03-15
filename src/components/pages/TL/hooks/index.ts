@@ -1,5 +1,16 @@
 import { PostType } from "@/components/Post";
 import { useState } from "react";
+import { getAuth } from "firebase/auth";
+import {
+  getDatabase,
+  ref,
+  push,
+  query,
+  orderByChild,
+  limitToLast,
+  onValue,
+  set,
+} from "firebase/database";
 
 type UseTLPage = {
   tlTitle: string;
@@ -13,6 +24,7 @@ type UseTLPage = {
   handleTlExit: () => void;
   handlePostChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleReply: (e: React.MouseEvent<HTMLButtonElement>, post: PostType) => void;
+  Postfetch: () => void;
 };
 
 //NOTE:  このdemoはbackendと繋げられたら消す
@@ -56,6 +68,7 @@ export const useTLPage = ({
   const [inputPost, setInputPost] = useState<PostType>(defaultPost);
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [repliedPost, setRepliedPost] = useState<string>("Hello, world!");
+  const [replyId, setReplyId] = useState<string>("");
 
   const handleBackPage = () => {
     console.log("back");
@@ -71,7 +84,8 @@ export const useTLPage = ({
   ) => {
     e.preventDefault();
     setIsReplying(true);
-
+    setReplyId(post.id);
+    setRepliedPost(post.content);
     console.log("reply", post);
   };
 
@@ -83,15 +97,87 @@ export const useTLPage = ({
     });
   };
 
-  const handlePostSend = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePostSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("send");
+    const auth = getAuth();
+    const db = getDatabase();
     e.preventDefault();
     if (isReplying) {
       setIsReplying(false);
     }
+    //postの長さを取得
+    const num = `${posts.length + 1}`;
+    //日時を取得
+    const date = new Date();
+    //月の取得
+    const month = date.getMonth() + 1;
+    //日の取得
+    const day = date.getDate();
+    //時間の取得ただし一桁の場合は0をつける
+    const hournum = date.getHours();
+    const hour = hournum < 10 ? `0${hournum}` : hournum;
+    //分の取得
+    const minutenum = date.getMinutes();
+    const minute = minutenum < 10 ? `0${minutenum}` : minutenum;
+    if (isReplying === false) {
+      const sendData = {
+        id: num,
+        date: `${month}/${day}`,
+        time: `${hour}:${minute}`,
+        content: inputPost.content,
+      };
 
-    console.log("send", inputPost);
-    setInputPost(defaultPost);
+      try {
+        const dbRef = ref(db, `events/test/messages`);
+        await push(dbRef, sendData);
+        setInputPost(defaultPost);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    } else {
+      const sendData = {
+        id: num,
+        date: `${month}/${day}`,
+        time: `${hour}:${minute}`,
+        content: inputPost.content,
+        reply: replyId,
+      };
+      try {
+        const dbRef = ref(db, `events/test/messages`);
+        await push(dbRef, sendData);
+        setInputPost(defaultPost);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
+    }
+    //リアルタイムデータベースに書き込む
     setCount(countLimit);
+  };
+
+  const Postfetch = () => {
+    try {
+      const db = getDatabase();
+      const dbRef = ref(db, `events/test/messages`);
+      const q = query(dbRef, orderByChild("date"), limitToLast(10));
+      onValue(q, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+        if (data) {
+          const posts: PostType[] = Object.keys(data).map((key) => {
+            return {
+              id: key,
+              date: data[key].date,
+              time: data[key].time,
+              content: data[key].content,
+              reply: data[key].reply,
+            };
+          });
+          setPosts(posts);
+        }
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   };
 
   return {
@@ -106,5 +192,6 @@ export const useTLPage = ({
     handleReply,
     handlePostChange,
     handlePostSend,
+    Postfetch,
   };
 };

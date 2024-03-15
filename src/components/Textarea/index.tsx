@@ -16,16 +16,13 @@ export const Textarea = ({
   };
 
   return (
-    <>
-      <div className={styles.textbox}>
-        <textarea
-          className={styles.textarea}
-          {...props}
-          onChange={strCount}
-          maxLength={maxStringLength}
-        ></textarea>
-        <div className={styles.counter}>{count}</div>
-      </div>
-    </>
+    <div className={styles.textbox}>
+      <textarea
+        className={styles.textarea}
+        maxLength={maxStringLength}
+        {...props}
+      ></textarea>
+      <div className={styles.counter}>{count}</div>
+    </div>
   );
 };
