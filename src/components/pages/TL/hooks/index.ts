@@ -67,6 +67,7 @@ export const useTLPage = ({
   const [inputPost, setInputPost] = useState<PostType>(defaultPost);
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [repliedPost, setRepliedPost] = useState<string>("Hello, world!");
+  const [replyId, setReplyId] = useState<number>();
 
   const handleBackPage = () => {
     console.log("back");
@@ -82,7 +83,8 @@ export const useTLPage = ({
   ) => {
     e.preventDefault();
     setIsReplying(true);
-
+    setReplyId(post.id);
+    setRepliedPost(post.content);
     console.log("reply", post);
   };
 
@@ -101,8 +103,8 @@ export const useTLPage = ({
     if (isReplying) {
       setIsReplying(false);
     }
-    //githubのidを取得
-    const userName: any = auth.currentUser?.uid;
+    //postの長さを取得
+    const num = posts.length + 1;
     //日時を取得
     const date = new Date();
     //月の取得
@@ -114,10 +116,11 @@ export const useTLPage = ({
     //分の取得
     const minute = date.getMinutes();
     const sendData: PostType = {
-      id: userName,
+      id: num,
       date: `${month}/${day}`,
       time: `${hour}:${minute}`,
       content: inputPost.content,
+      reply: replyId,
     };
     //リアルタイムデータベースに書き込む
     try {
@@ -140,12 +143,13 @@ export const useTLPage = ({
         const data = snapshot.val();
         console.log(data);
         if (data) {
-          const posts = Object.keys(data).map((key) => {
+          const posts: PostType[] = Object.keys(data).map((key) => {
             return {
               id: key,
               date: data[key].date,
               time: data[key].time,
               content: data[key].content,
+              reply: data[key].reply,
             };
           });
           setPosts(posts);
