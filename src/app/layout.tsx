@@ -25,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${NotoSansJP.variable} ${RampartOneFont.variable} font-NotoSansJP`}>{children}</body>
+      <body
+        className={`${NotoSansJP.variable} ${RampartOneFont.variable} font-NotoSansJP`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
