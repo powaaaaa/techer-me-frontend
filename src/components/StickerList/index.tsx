@@ -1,16 +1,23 @@
-import { Techer } from "@/components/Techer";
-
-export type TecherType = {
-  image: string;
-  name: string;
-  times: number;
-};
+import { MouseEvent } from "react";
+import { Techer, TecherType } from "@/components/Techer";
 
 type Props = {
   techers: TecherType[];
+  handleShowPreview: (
+    e: MouseEvent<HTMLButtonElement>,
+    techer: TecherType
+  ) => void;
 };
 
-export const StickerList: React.FC<Props> = ({ techers }) => {
+export const StickerList: React.FC<Props> = ({
+  techers,
+  handleShowPreview,
+}) => {
+  const handleClick =
+    (techer: TecherType) => (e: MouseEvent<HTMLButtonElement>) => {
+      handleShowPreview(e, techer);
+    };
+
   return (
     <div>
       {techers.map((techer, i) => (
@@ -19,6 +26,7 @@ export const StickerList: React.FC<Props> = ({ techers }) => {
             src={techer.image}
             techerName={techer.name}
             times={techer.times}
+            onClick={handleClick(techer)}
           />
           {i < techers.length - 1 && (
             <div className="h-[0.4px] my-2 bg-grey"></div>

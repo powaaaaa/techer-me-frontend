@@ -1,31 +1,30 @@
 "use client";
-import { useState } from "react";
-import { ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { CheckMark } from "../icons/CheckMark";
+
 type Props = {
-  onCheckedChange: (checked: boolean) => void;
-  children: ReactNode;
-};
+  label: string;
+  checked: boolean;
+  className?: string;
+  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+} & ComponentPropsWithoutRef<"button">;
 
-export const Checkbox: React.FC<Props> = ({ onCheckedChange, children }) => {
-  const [checked, setChecked] = useState(false);
-
-  const handleClick = () => {
-    const newChecked = !checked;
-    setChecked(newChecked);
-    onCheckedChange(newChecked);
-  };
-
+export const Checkbox: React.FC<Props> = ({
+  label,
+  checked,
+  className,
+  handleClick,
+}) => {
   return (
     <>
-      <div className="flex items-center">
-        <span
-          className="w-[6.0vw] h-[6.0vw] border-solid border-[0.4vw] border-black rounded"
+      <div className={`flex items-center ${className}`}>
+        <button
+          className="min-w-6 min-h-6 border-[3px] border-black rounded"
           onClick={handleClick}
         >
           {checked && <CheckMark />}
-        </span>
-        <div className="px-[4vw] text-2xl	 font-bold">{children}</div>
+        </button>
+        <label className="pl-2.5 font-bold">{label}</label>
       </div>
     </>
   );

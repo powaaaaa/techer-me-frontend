@@ -1,30 +1,40 @@
-export const Calender = () => {
+export const ImageIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className="ionicon"
       viewBox="0 0 512 512"
-      width={16}
-      height={16}
+      width="20"
+      height="20"
     >
       <rect
         x="48"
         y="80"
         width="416"
-        height="384"
+        height="352"
         rx="48"
+        ry="48"
         fill="none"
         stroke="currentColor"
         stroke-linejoin="round"
         stroke-width="32"
       />
+      <circle
+        cx="336"
+        cy="176"
+        r="32"
+        fill="none"
+        stroke="currentColor"
+        stroke-miterlimit="10"
+        stroke-width="32"
+      />
       <path
+        d="M304 335.79l-90.66-90.49a32 32 0 00-43.87-1.3L48 352M224 432l123.34-123.34a32 32 0 0143.11-2L464 368"
         fill="none"
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="32"
-        d="M128 48v32M384 48v32M464 160H48M304 260l43.42-32H352v168M191.87 306.63c9.11 0 25.79-4.28 36.72-15.47a37.9 37.9 0 0011.13-27.26c0-26.12-22.59-39.9-47.89-39.9-21.4 0-33.52 11.61-37.85 18.93M149 374.16c4.88 8.27 19.71 25.84 43.88 25.84 28.59 0 52.12-15.94 52.12-43.82 0-12.62-3.66-24-11.58-32.07-12.36-12.64-31.25-17.48-41.55-17.48"
       />
     </svg>
   );

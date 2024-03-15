@@ -1,9 +1,9 @@
-import { Checkbox } from ".";
+import { Textarea } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof Checkbox> = {
-  component: Checkbox,
+const meta: Meta<typeof Textarea> = {
+  component: Textarea,
   parameters: {
     layout: "centered",
   },
@@ -12,11 +12,10 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Checkbox>;
+type Story = StoryObj<typeof Textarea>;
 
 export const Default: Story = {
   args: {
-    label: "label",
-    checked: true,
+    maxStringLength: 1000,
   },
 };
