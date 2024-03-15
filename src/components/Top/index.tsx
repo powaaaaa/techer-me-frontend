@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Sticker } from "@/components/Sticker";
-import { TecherType, StickerList } from "../StickerList";
-import { fetchUserData, getData } from "./hooks/fetchdata";
+import { TecherType } from "../Techer";
+import { StickerList } from "../StickerList";
+import { getData } from "./hooks/fetchdata";
 import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
