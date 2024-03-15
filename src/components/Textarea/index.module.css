@@ -1,5 +1,7 @@
 .textbox {
-  width: 90%;
+  position: relative;
+  width: 100%;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
@@ -17,10 +19,11 @@
 }
 
 .counter {
+  position: relative;
   height: 0px;
   color: #777777;
-  position: relative;
-  bottom: 40px;
-  right: 10px;
+  font-size: 8px;
+  bottom: 28px;
+  right: 8px;
   text-align: right;
 }

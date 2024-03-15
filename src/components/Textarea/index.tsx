@@ -1,7 +1,7 @@
 "use client";
 import { TextareaHTMLAttributes } from "react";
 import { useState } from "react";
-import styles from "./Textarea.module.css";
+import styles from "./index.module.css";
 
 export const Textarea = ({
   maxStringLength,
