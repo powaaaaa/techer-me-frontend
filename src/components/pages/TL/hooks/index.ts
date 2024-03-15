@@ -110,10 +110,12 @@ export const useTLPage = ({
     const month = date.getMonth() + 1;
     //日の取得
     const day = date.getDate();
-    //時間の取得
-    const hour = date.getHours();
+    //時間の取得ただし一桁の場合は0をつける
+    const hournum = date.getHours();
+    const hour = hournum < 10 ? `0${hournum}` : hournum;
     //分の取得
-    const minute = date.getMinutes();
+    const minutenum = date.getMinutes();
+    const minute = minutenum < 10 ? `0${minutenum}` : minutenum;
     if (isReplying === false) {
       const sendData = {
         id: num,
