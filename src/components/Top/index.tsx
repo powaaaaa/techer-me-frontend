@@ -2,6 +2,10 @@
 import { useEffect, useState } from "react";
 import { TecherType, StickerList } from "../StickerList";
 import { fetchUserData, getData } from "./hooks/fetchdata";
+import { firebaseConfig } from "@/lib/firebase/firebase";
+import { initializeApp } from "firebase/app";
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { Button } from "../Button";
 
 type Props = {};
 
@@ -34,25 +38,136 @@ type UserData = {
   user_id: string;
 };
 
+const testtecher: TecherType[] = [
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/111046707?v=4",
+    name: "powaaaaa",
+    times: 1,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/126382452?v=4",
+    name: "Sea10wood",
+    times: 2,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/111046707?v=4",
+    name: "powaaaaa",
+    times: 1,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/126382452?v=4",
+    name: "Sea10wood",
+    times: 2,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/111046707?v=4",
+    name: "powaaaaa",
+    times: 1,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/126382452?v=4",
+    name: "Sea10wood",
+    times: 2,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/111046707?v=4",
+    name: "powaaaaa",
+    times: 1,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/126382452?v=4",
+    name: "Sea10wood",
+    times: 2,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/111046707?v=4",
+    name: "powaaaaa",
+    times: 1,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/126382452?v=4",
+    name: "Sea10wood",
+    times: 2,
+  },
+  {
+    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
+    name: "yamato0211",
+    times: 0,
+  },
+];
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 export const Top: React.FC<Props> = ({}) => {
   const [Event, setEvent] = useState<Event>();
   const [Techers, setTechers] = useState<TecherType[]>();
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchData = async () => {
+      const token = auth.currentUser?.getIdToken();
       if (token) {
-        getData(token).then((data) => setTechers(data));
+        console.log("token is found");
+        const tokenValue = await token;
+        const Techers = await getData(tokenValue);
+        setTechers(Techers);
+      } else {
+        console.log("token is not found");
       }
     };
     fetchData();
-  }, [token]);
+  }, [app]);
+
+  //githubログイン
+  const handleShowPreview = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    techer: TecherType
+  ) => {
+    console.log(techer);
+  };
 
   return (
     <>
-      <div>
-        <h1></h1>
-        <StickerList techers={Techers ?? []}></StickerList>
+      <div className="flex flex-col items-center my-5">
+        <Button color="primary" variant="contained">
+          イベント登録
+        </Button>
+        <div className="my-5 w-full flex flex-col items-center">
+          <div className="w-[90%] max-w-[500px] text-sm px-[50px] m">
+            保有ステッカー
+          </div>
+          <div className="flex flex-col items-center h-[60vh] w-[90%] max-w-[500px] overflow-auto ">
+            <StickerList
+              techers={testtecher}
+              handleShowPreview={handleShowPreview}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

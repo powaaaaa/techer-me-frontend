@@ -1,5 +1,3 @@
-import { getauth } from "firebase/auth";
-
 type Event = {
   event_id: string;
   finished_at: string;
@@ -33,10 +31,6 @@ type TecherData = {
   event_id: string;
   user_id: string;
 };
-
-//firebaseからtokenを取得
-const auth = getauth();
-console.log(auth);
 
 export const getData = async (token: string) => {
   try {
