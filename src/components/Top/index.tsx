@@ -1,43 +1,57 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TecherType, StickerList } from "../StickerList";
+import { fetchUserData, getData } from "./hooks/fetchdata";
 
 type Props = {};
 
 type Event = {
-  id: number;
+  event_id: string;
+  finished_at: string;
+  image_url: string;
+  message: string;
   name: string;
-  date: string;
-  place: string;
-  description: string;
+  owner_id: string;
+  started_at: string;
+};
+
+type Skills = {
+  [key: string]: string;
+};
+
+type URLs = {
+  [key: string]: string;
 };
 
 type UserData = {
-  id: string;
+  events: Event[];
+  image_url: string;
+  is_organizer: boolean;
+  message: string;
   name: string;
-  Events: Event[];
-  stickers: TecherType[];
+  skills: Skills;
+  urls: URLs;
+  user_id: string;
 };
 
 export const Top: React.FC<Props> = ({}) => {
   const [Event, setEvent] = useState<Event>();
   const [Techers, setTechers] = useState<TecherType[]>();
-  const [userId, setUserId] = useState<string>();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (userId) {
-      fetch(`http://localhost:8080/swagger/${userId}/doc.json`)
-        .then((res) => res.json())
-        .then((data) => {
-          setEvent(data);
-        });
-    }
-  }, [userId]);
+    const fetchData = async () => {
+      if (token) {
+        getData(token).then((data) => setTechers(data));
+      }
+    };
+    fetchData();
+  }, [token]);
 
   return (
     <>
       <div>
-        <h1>{Event?.name}</h1>
+        <h1></h1>
         <StickerList techers={Techers ?? []}></StickerList>
       </div>
     </>
