@@ -1,6 +1,6 @@
-import { Button } from "@/components/Button";
-import { Sticker } from "@/components/Sticker";
-import { TecherME_Logo } from "@/components/TecherME_Logo";
+import { Button } from "@/components/ui/Button";
+import { Sticker } from "@/components/ui/Sticker";
+import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { useJoinPage } from "./hooks";
 
 export const JoinPage: React.FC = ({}) => {
