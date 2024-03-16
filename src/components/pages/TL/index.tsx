@@ -11,9 +11,10 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { PostType } from "@/components/ui/Post";
 import { Modal } from "@/components/ui/Modal";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export const TLPage: React.FC = () => {
-  const [message, setMessage] = useState<PostType[]>();
+  // const [message, setMessage] = useState<PostType[]>();
 
   const {
     tlTitle,
@@ -31,6 +32,9 @@ export const TLPage: React.FC = () => {
     Postfetch,
   } = useTLPage({ countLimit: 500 });
 
+  const param = useSearchParams();
+  const search = param.get("event_id");
+
   //firebaseのリアルタイムデータベースのmessageの追加に反応して更新
   useEffect(() => {
     const db = getDatabase();
@@ -44,9 +48,9 @@ export const TLPage: React.FC = () => {
   return (
     <div>
       <header className="flex justify-between pt-6 px-6 pb-8">
-        <button onClick={handleBackPage}>
+        <Link href={`/top?event_id=${search}`}>
           <ArrowBack />
-        </button>
+        </Link>
         <p className="font-bold">{tlTitle}</p>
 
         <Modal
