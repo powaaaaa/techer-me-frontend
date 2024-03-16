@@ -9,11 +9,12 @@ type Props = {};
 
 export const NewEventScanPage: React.FC<Props> = ({}) => {
   const router = useRouter();
+
   const [qrCode, setQrCode] = useState<string>("");
 
   const handleGoEventTop = () => {
     console.log("イベントトップへ");
-    router.push(`/top?event_id=${qrCode}`);
+    router.push(`/join?event_id=${qrCode}`);
   };
 
   useEffect(() => {

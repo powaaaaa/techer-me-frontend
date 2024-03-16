@@ -6,13 +6,60 @@ import { getAuth } from "firebase/auth";
 import { Sticker } from "@/components/ui/Sticker";
 import { CameraScan } from "@/components/ui/CameraScan";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export const QRExchangePage: React.FC = ({}) => {
   const [qrCode, setQrCode] = useState<string>("");
+
+  const param = useSearchParams();
+  const event_id = param.get("event_id");
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const postData = async () => {
+      if (qrCode !== "") {
+        console.log("qrCode", qrCode);
+        const token = await auth.currentUser?.getIdToken();
+        const tokenValue = await token;
+        if (tokenValue) {
+          try {
+            const myId = auth.currentUser?.uid;
+            if (!myId) {
+              return;
+            }
+            const response = await fetch(
+              "https://server-u7kyixk36q-an.a.run.app/exchanges",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer${token}`,
+                },
+                body: JSON.stringify({
+                  event_id: event_id,
+                  user_id_1: myId,
+                  user_id_2: qrCode,
+                }),
+              }
+            );
+            if (!response.ok) {
+              throw new Error(`Error: ${response.status}`);
+            }
+            router.push(`/top?event_id=${event_id}`);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+      }
+    };
+    postData();
+  }, [qrCode]);
 
   return (
     <>

@@ -1,10 +1,99 @@
+"use client";
 import { Button } from "@/components/ui/Button";
 import { Sticker } from "@/components/ui/Sticker";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { useJoinPage } from "./hooks";
+import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
+import { firebaseConfig } from "@/lib/firebase/firebase";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { useRouter } from "next/navigation";
+
+type eventData = {
+  event_id: string;
+  finished_at: string;
+  image_url: string;
+  message: string;
+  name: string;
+  owner_id: string;
+  started_at: string;
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 export const JoinPage: React.FC = ({}) => {
-  const { userIcon, event, handleJoinEvent } = useJoinPage();
+  const router = useRouter();
+  const { userIcon, event } = useJoinPage();
+  const [eventData, setEventData] = useState<eventData>();
+
+  const param = useSearchParams();
+  const event_id = param.get("event_id");
+
+  useEffect(() => {
+    if (event_id) {
+      const fetchEvent = async (event_id: string) => {
+        const token = await auth.currentUser?.getIdToken();
+        const tokenValue = await token;
+        if (tokenValue) {
+          try {
+            const response = await fetch(
+              `https://server-u7kyixk36q-an.a.run.app/events/${event_id}`,
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            );
+            if (!response.ok) {
+              throw new Error(`Error: ${response.status}`);
+            }
+            const jsonData: eventData = await response.json();
+            setEventData(jsonData);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+      };
+      fetchEvent(event_id);
+    }
+  }, [event_id]);
+
+  const handleJoinEvent = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    postEvent();
+    console.log("join");
+    router.push(`/top?event_id=${event_id}`);
+  };
+
+  const postEvent = async () => {
+    const event_id = param.get("event_id");
+    const token = await auth.currentUser?.getIdToken();
+    const tokenValue = await token;
+    if (tokenValue) {
+      try {
+        const response = await fetch(
+          `https://server-u7kyixk36q-an.a.run.app/events/join/${event_id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            method: "POST",
+          }
+        );
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        const jsonData: eventData = await response.json();
+        setEventData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+  };
 
   return (
     <div className="relative w-full font-bold px-6">
@@ -22,19 +111,33 @@ export const JoinPage: React.FC = ({}) => {
         <div className="pb-12">
           <div className="pb-6">
             <p className="text-[8px] pb-1">● イベント名</p>
-            <p className="pl-4">{event.name}</p>
+            {eventData ? (
+              <p className="pl-4">{eventData.name}</p>
+            ) : (
+              <p>loading...</p>
+            )}
           </div>
 
           <div className="pb-8">
             <p className="text-[8px] pb-1">● 開催期間</p>
-            <p className="pl-4">
-              {event.startDate} ~ {event.endDate}
-            </p>
+            <div className="pl-4">
+              {eventData ? (
+                <>
+                  {eventData.started_at} 〜 {eventData.finished_at}
+                </>
+              ) : (
+                <p>loading...</p>
+              )}
+            </div>
           </div>
 
           <div className="pb-8">
             <p className="text-[8px] pb-2">● 主催者からのメッセージ</p>
-            <p className="text-[10px] break-words">{event.message}</p>
+            {eventData ? (
+              <p className="text-[10px] break-words">{eventData.message}</p>
+            ) : (
+              <p>loading...</p>
+            )}
           </div>
 
           <div>
@@ -46,14 +149,18 @@ export const JoinPage: React.FC = ({}) => {
         </div>
 
         <div className="flex justify-center">
-          <Button
-            className="py-0.5 px-8"
-            color="transparent"
-            variant="outlined"
-            onClick={handleJoinEvent}
-          >
-            このイベントに参加します
-          </Button>
+          {eventData ? (
+            <Button
+              className="py-0.5 px-8"
+              color="transparent"
+              variant="outlined"
+              onClick={handleJoinEvent}
+            >
+              このイベントに参加します
+            </Button>
+          ) : (
+            <p>loading...</p>
+          )}
         </div>
 
         <p className="pt-6 text-[10px]">
