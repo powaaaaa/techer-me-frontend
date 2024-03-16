@@ -53,9 +53,7 @@ export const Card: React.FC<Props> = ({
             items-center p-2
             "
             >
-              <div className="ml-1">
-                <Twitter />
-              </div>
+             <p className="text-[32px]">X</p>
 
               <a href={twitter} className="pl-[20px] text-[12px]">
                 {twitter}
