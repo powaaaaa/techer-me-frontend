@@ -1,11 +1,10 @@
+// Welcome.js
+
 import { Button } from "@/components/ui/Button";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import Image from "next/image";
-import { useWelcomePage } from "./hooks";
 
-export const WelcomePage: React.FC = () => {
-  const { handleLoginByGitHub, handleLoinByEmail } = useWelcomePage();
-
+export default function Welcome() {
   return (
     <div className="h-screen flex flex-col justify-center items-center overflow-hidden">
       <div
@@ -41,10 +40,7 @@ export const WelcomePage: React.FC = () => {
         </div>
 
         <div className="flex flex-col justify-center items-center gap-4 mt-[400px]">
-          <Button
-            className="py-2 px-4 text-xl flex gap-4 items-center"
-            onClick={handleLoginByGitHub}
-          >
+          <Button className="py-2 px-4 text-xl flex gap-4 items-center">
             <Image
               src={"/github-mark-white.png"}
               alt={"github_icon"}
@@ -58,7 +54,6 @@ export const WelcomePage: React.FC = () => {
             className="py-1 px-10 text-xl "
             color="secondary"
             variant="outlined"
-            onClick={handleLoinByEmail}
           >
             e-mail認証
           </Button>
@@ -66,4 +61,4 @@ export const WelcomePage: React.FC = () => {
       </div>
     </div>
   );
-};
+}

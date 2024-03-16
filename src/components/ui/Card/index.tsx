@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Twitter } from "@/components/icons/twitterLogo";
 
 type Props = {
   handleName: string;
@@ -53,12 +54,7 @@ export const Card: React.FC<Props> = ({
             "
             >
               <div className="ml-1">
-                <Image
-                  src="/logo-black.png"
-                  alt="x_icon"
-                  width="24"
-                  height="24"
-                />
+                <Twitter />
               </div>
 
               <a href={twitter} className="pl-[20px] text-[12px]">
