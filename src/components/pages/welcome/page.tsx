@@ -1,5 +1,3 @@
-// Welcome.js
-
 import { Button } from "@/components/Button";
 import { TecherME_Logo } from "@/components/TecherME_Logo";
 import Image from "next/image";
