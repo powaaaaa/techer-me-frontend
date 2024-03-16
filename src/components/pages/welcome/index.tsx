@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import Image from "next/image";
 
-export default function Welcome() {
+export const WelcomePage = () => {
   return (
     <div className="h-screen flex flex-col justify-center items-center overflow-hidden">
       <div
@@ -61,4 +61,4 @@ export default function Welcome() {
       </div>
     </div>
   );
-}
+};
