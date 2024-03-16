@@ -1,3 +1,4 @@
+
 "use client";
 import { Button } from "@/components/Button";
 import { Checkbox } from "@/components/Checkbox";
@@ -15,6 +16,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { useState, useEffect, use } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type InputEventType = EventInfoType;
 
@@ -160,9 +162,9 @@ export const OwnerPage: React.FC = ({}) => {
           size="sm"
           className="absolute top-[6px] right-4"
         />
-        <button onClick={handleBackPage}>
+        <Link href={"/qrScan"}>
           <ArrowBack />
-        </button>
+        </Link>
         <p className="mx-auto">新規イベントタグの作成</p>
       </header>
 

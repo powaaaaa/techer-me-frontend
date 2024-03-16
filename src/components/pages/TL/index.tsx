@@ -1,32 +1,39 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { Button } from "@/components/Button";
-import { PostInput } from "@/components/PostInput";
-import { PostList } from "@/components/PostList";
+import { Button } from "@/components/ui/Button";
+import { PostInput } from "@/components/ui/PostInput";
+import { PostList } from "@/components/ui/PostList";
 import { ArrowBack } from "@/components/icons/ArrowBack";
 import { useTLPage } from "./hooks";
-import { PostReplyBox } from "@/components/PostReplyBox";
+import { PostReplyBox } from "@/components/ui/PostReplyBox";
 import { getDatabase, onValue, ref } from "firebase/database";
-import { Post, PostType } from "@/components/Post";
+import { PostType } from "@/components/ui/Post";
+import { Modal } from "@/components/ui/Modal";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export const TLPage: React.FC = () => {
-  const [message, setMessage] = useState<PostType[]>();
+  // const [message, setMessage] = useState<PostType[]>();
 
   const {
     tlTitle,
     count,
+    showModal,
+    setShowModal,
     posts,
     inputPost,
     isReplying,
     repliedPost,
     handleBackPage,
-    handleTlExit,
     handleReply,
     handlePostChange,
     handlePostSend,
     Postfetch,
   } = useTLPage({ countLimit: 500 });
+
+  const param = useSearchParams();
+  const search = param.get("event_id");
 
   //firebaseのリアルタイムデータベースのmessageの追加に反応して更新
   useEffect(() => {
@@ -41,18 +48,35 @@ export const TLPage: React.FC = () => {
   return (
     <div>
       <header className="flex justify-between pt-6 px-6 pb-8">
-        <button onClick={handleBackPage}>
+        <Link href={`/top?event_id=${search}`}>
           <ArrowBack />
-        </button>
+        </Link>
         <p className="font-bold">{tlTitle}</p>
-        <Button
+
+        <Modal
           className="py-px px-2 text-[10px]"
-          color="secondary"
-          variant="outlined"
-          onClick={handleTlExit}
+          label="退出する"
+          showModal={showModal}
+          setShowModal={setShowModal}
         >
-          退出する
-        </Button>
+          <p className="p-4">モーダルの中身</p>
+
+          <div className="flex justify-center border-t-[0.4px] border-black">
+            <Button
+              className="py-[10px]"
+              color="transparent"
+              onClick={() => setShowModal(false)}
+            >
+              キャンセル
+            </Button>
+            <div className="w-[0.4px] bg-black mx-5"></div>
+            <Link className="py-[2px]" href={"/top"}>
+              <Button className="py-2" color="transparent">
+                退出する
+              </Button>
+            </Link>
+          </div>
+        </Modal>
       </header>
 
       <main className="px-6">
