@@ -2,10 +2,22 @@ import { Button } from "@/components/ui/Button";
 import { QRcode } from "@/components/ui/QRcode";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { useQRPage } from "./hooks";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export const QRPage: React.FC = ({}) => {
+  const [qrid, setQrid] = useState<string>("");
   const { PDFRef, eventName, eventQRCode, handleGoOwner } = useQRPage();
+
+  const param = useSearchParams();
+
+  useEffect(() => {
+    const event_id = param.get("event_id");
+    if (event_id) {
+      setQrid(event_id);
+    }
+  }, [param]);
 
   return (
     <div ref={PDFRef} className="px-6 font-bold">
@@ -16,8 +28,8 @@ export const QRPage: React.FC = ({}) => {
 
       <main className="relative flex flex-col">
         <p className="mx-auto pb-8 text-2xl">{eventName}</p>
-        <div>
-          <QRcode className="pb-16 mx-auto" url={eventQRCode} />
+        <div className="flex justify-center py-9">
+          {qrid ? <QRcode url={qrid} /> : <p>QRコードがありません</p>}
         </div>
 
         <Button
