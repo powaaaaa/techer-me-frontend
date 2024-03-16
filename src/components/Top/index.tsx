@@ -43,8 +43,8 @@ type UserData = {
 
 const testtecher: TecherType[] = [
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "Kizuku",
     times: 0,
   },
   {
@@ -58,8 +58,8 @@ const testtecher: TecherType[] = [
     times: 2,
   },
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "Kizuku",
     times: 0,
   },
   {
@@ -73,8 +73,8 @@ const testtecher: TecherType[] = [
     times: 2,
   },
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "Kizuku",
     times: 0,
   },
   {
@@ -88,8 +88,8 @@ const testtecher: TecherType[] = [
     times: 2,
   },
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "Kizuku",
     times: 0,
   },
   {
@@ -103,8 +103,8 @@ const testtecher: TecherType[] = [
     times: 2,
   },
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "K-Kizuku",
     times: 0,
   },
   {
@@ -118,8 +118,8 @@ const testtecher: TecherType[] = [
     times: 2,
   },
   {
-    image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
-    name: "yamato0211",
+    image: "https://avatars.githubusercontent.com/u/83001474?v=4",
+    name: "K-Kizuku",
     times: 0,
   },
 ];
@@ -179,7 +179,7 @@ export const Top: React.FC<Props> = ({}) => {
           </div>
           <div className="flex flex-col items-center my-5">
             <Sticker
-              src="https://avatars.githubusercontent.com/u/88587703?s=48&v=4"
+              src="https://avatars.githubusercontent.com/u/83001474?v=4"
               alt="test"
             />
           </div>
