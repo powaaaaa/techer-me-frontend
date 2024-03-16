@@ -93,7 +93,7 @@ export const useTopPage = (): UseTopPage => {
     };
 
     fetchData();
-  }, [app]);
+  }, []);
 
   const handleShowPreview = (
     e: React.MouseEvent<HTMLButtonElement>,

@@ -30,9 +30,9 @@ export const QRExchangePage: React.FC = ({}) => {
         if (tokenValue) {
           try {
             const myId = auth.currentUser?.uid;
-            if (!myId) {
-              return;
-            }
+            // if (!myId) {
+            //   return;
+            // }
             const response = await fetch(
               "https://server-u7kyixk36q-an.a.run.app/exchanges",
               {
@@ -60,6 +60,8 @@ export const QRExchangePage: React.FC = ({}) => {
     };
     postData();
   }, [qrCode]);
+
+  useEffect(() => {});
 
   return (
     <>

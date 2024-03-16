@@ -26,9 +26,9 @@ export const NewEventScanPage: React.FC<Props> = ({}) => {
   return (
     <div className="h-[100%] flex flex-col">
       <div className=" bg-black/80 ">
-        <div className="p-4">
+        <Link className="p-4" href={"/top"}>
           <ArrowBack />
-        </div>
+        </Link>
         <p className="flex justify-center items-center text-white p-4">
           新規イベントQR読み取り
         </p>
