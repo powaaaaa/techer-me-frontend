@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { Button } from "../Button";
 import { TecherME_Logo } from "../TecherME_Logo";
+import Link from "next/link";
 
 type Props = {};
 
@@ -177,12 +178,14 @@ export const Top: React.FC<Props> = ({}) => {
               handleShowPreview={handleShowPreview}
             />
           </div>
-          <div className="flex flex-col items-center my-5">
-            <Sticker
-              src="https://avatars.githubusercontent.com/u/83001474?v=4"
-              alt="test"
-            />
-          </div>
+          <Link href={"/QRExchangePage"}>
+            <div className="flex flex-col items-center my-5">
+              <Sticker
+                src="https://avatars.githubusercontent.com/u/83001474?v=4"
+                alt="test"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     </div>
