@@ -7,7 +7,7 @@ import { PostList } from "@/components/ui/PostList";
 import { ArrowBack } from "@/components/icons/ArrowBack";
 import { useTLPage } from "./hooks";
 import { PostReplyBox } from "@/components/ui/PostReplyBox";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import { PostType } from "@/components/ui/Post";
 import { Modal } from "@/components/ui/Modal";
 import Link from "next/link";
@@ -25,6 +25,8 @@ export const TLPage: React.FC = () => {
     inputPost,
     isReplying,
     repliedPost,
+    eventId,
+    setEventId,
     handleBackPage,
     handleReply,
     handlePostChange,
@@ -33,22 +35,27 @@ export const TLPage: React.FC = () => {
   } = useTLPage({ countLimit: 500 });
 
   const param = useSearchParams();
-  const search = param.get("event_id");
 
   //firebaseのリアルタイムデータベースのmessageの追加に反応して更新
   useEffect(() => {
+    const event_id = param.get("event_id");
+    if (event_id) {
+      setEventId(event_id);
+      console.log("event_id", event_id);
+    }
+    if (eventId === "") return;
     const db = getDatabase();
-    const messageRef = ref(db, "message/");
+    const messageRef = ref(db, `message/${eventId}`);
     console.log("messageRef", messageRef);
     onValue(messageRef, (snapshot) => {
       Postfetch();
     });
-  }, []);
+  }, [eventId]);
 
   return (
     <div>
       <header className="flex justify-between pt-6 px-6 pb-8">
-        <Link href={`/top?event_id=${search}`}>
+        <Link href={`/top?event_id=${eventId}`}>
           <ArrowBack />
         </Link>
         <p className="font-bold">{tlTitle}</p>
