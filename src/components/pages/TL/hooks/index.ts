@@ -21,6 +21,8 @@ type UseTLPage = {
   inputPost: PostType;
   isReplying: boolean;
   repliedPost: string;
+  eventId: string;
+  setEventId: Dispatch<SetStateAction<string>>;
   handlePostSend: (e: React.FormEvent<HTMLFormElement>) => void;
   handleBackPage: () => void;
   handleTlExit: () => void;
@@ -73,6 +75,7 @@ export const useTLPage = ({
   const [isReplying, setIsReplying] = useState<boolean>(false);
   const [repliedPost, setRepliedPost] = useState<string>("Hello, world!");
   const [replyId, setReplyId] = useState<string>("");
+  const [eventId, setEventId] = useState<string>("");
 
   const handleBackPage = () => {
     console.log("back");
@@ -132,7 +135,7 @@ export const useTLPage = ({
       };
 
       try {
-        const dbRef = ref(db, `events/test/messages`);
+        const dbRef = ref(db, `events/${eventId}/messages`);
         await push(dbRef, sendData);
         setInputPost(defaultPost);
       } catch (error) {
@@ -147,7 +150,7 @@ export const useTLPage = ({
         reply: replyId,
       };
       try {
-        const dbRef = ref(db, `events/test/messages`);
+        const dbRef = ref(db, `events/${eventId}/messages`);
         await push(dbRef, sendData);
         setInputPost(defaultPost);
       } catch (error) {
@@ -161,7 +164,8 @@ export const useTLPage = ({
   const Postfetch = () => {
     try {
       const db = getDatabase();
-      const dbRef = ref(db, `events/test/messages`);
+      const dbRef = ref(db, `events/${eventId}/messages`);
+      console.log(eventId);
       const q = query(dbRef, orderByChild("date"), limitToLast(10));
       onValue(q, (snapshot) => {
         const data = snapshot.val();
@@ -193,6 +197,8 @@ export const useTLPage = ({
     inputPost,
     isReplying,
     repliedPost,
+    eventId,
+    setEventId,
     handleBackPage,
     handleTlExit,
     handleReply,

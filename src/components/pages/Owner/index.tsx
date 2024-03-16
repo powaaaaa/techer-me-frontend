@@ -13,7 +13,7 @@ import { ArrowDown } from "@/components/icons/ArrowDown";
 import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -45,6 +45,7 @@ export const OwnerPage: React.FC = ({}) => {
   const [userIcon, setUserIcon] = useState<string>(demoIcon);
   const [inputEvent, setInputEvent] = useState<InputEventType>(defaultEvent);
   const [event_id, setEvent_id] = useState<string>("");
+  const [photo, setPhoto] = useState<string>("");
 
   const [checked, setChecked] = useState(false);
   const [count, setCount] = useState(maxLength);
@@ -52,8 +53,17 @@ export const OwnerPage: React.FC = ({}) => {
   const router = useRouter();
 
   useEffect(() => {
+    const fetchUserIcon = async () => {
+      const URL = await auth.currentUser?.photoURL;
+      if (URL) {
+        setPhoto(URL);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     if (event_id !== "") {
-      router.push(`/qr?evet_id=${event_id}`);
+      router.push(`/qr?event_id=${event_id}`);
     }
   }, [event_id]);
 
@@ -155,12 +165,21 @@ export const OwnerPage: React.FC = ({}) => {
     <div className="px-6 font-bold">
       <header className="relative flex pt-12 pb-7">
         <TecherME_Logo className="absolute top-[6px] left-[0.5vw]" />
-        <Sticker
-          src={userIcon}
-          alt="userIcon"
-          size="sm"
-          className="absolute top-[6px] right-4"
-        />
+        {photo ? (
+          <Sticker
+            src={photo}
+            alt="userIcon"
+            size="sm"
+            className="absolute top-[6px] right-4"
+          />
+        ) : (
+          <Sticker
+            src={userIcon}
+            alt="userIcon"
+            size="sm"
+            className="absolute top-[6px] right-4"
+          />
+        )}
         <Link href={"/qrScan"}>
           <ArrowBack />
         </Link>
