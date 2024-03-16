@@ -11,13 +11,13 @@ export const QRPage: React.FC = ({}) => {
   const { PDFRef, eventName, eventQRCode, handleGoOwner } = useQRPage();
 
   const param = useSearchParams();
-  const event_id = param.get("event_id");
 
   useEffect(() => {
+    const event_id = param.get("event_id");
     if (event_id) {
       setQrid(event_id);
     }
-  }, [event_id]);
+  }, [param]);
 
   return (
     <div ref={PDFRef} className="px-6 font-bold">
@@ -28,7 +28,9 @@ export const QRPage: React.FC = ({}) => {
 
       <main className="relative flex flex-col">
         <p className="mx-auto pb-8 text-2xl">{eventName}</p>
-        <div>{qrid ? <QRcode url={qrid} /> : <p>QRコードがありません</p>}</div>
+        <div className="flex justify-center py-9">
+          {qrid ? <QRcode url={qrid} /> : <p>QRコードがありません</p>}
+        </div>
 
         <Button
           color="secondary"
