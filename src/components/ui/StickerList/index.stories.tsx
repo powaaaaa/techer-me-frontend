@@ -23,16 +23,19 @@ export const Default: Story = {
   args: {
     techers: [
       {
+        id: "a",
         image: "https://avatars.githubusercontent.com/u/88587703?s=48&v=4",
         name: "yamato0211",
         times: 0,
       },
       {
+        id: "b",
         image: "https://avatars.githubusercontent.com/u/111046707?v=4",
         name: "powaaaaa",
         times: 1,
       },
       {
+        id: "c",
         image: "https://avatars.githubusercontent.com/u/126382452?v=4",
         name: "Sea10wood",
         times: 2,
