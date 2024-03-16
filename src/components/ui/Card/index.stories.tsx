@@ -16,12 +16,12 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   args: {
-    handleName: "handleName",
-    organization: "organization",
-    events: ["events1", "events2", "events3"],
-    github: "github",
-    twitter: "twitter",
-    discord: "discord",
-    website: ["website1", "website2"],
+    profile: {
+      name: "handleName",
+      // organaize: "organization",
+      github: "github",
+      url: "twitter",
+      discord: "discord",
+    },
   },
 };
