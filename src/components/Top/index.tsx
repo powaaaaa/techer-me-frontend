@@ -8,6 +8,7 @@ import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { Button } from "../Button";
+import { TecherME_Logo } from "../TecherME_Logo";
 
 type Props = {};
 
@@ -154,9 +155,16 @@ export const Top: React.FC<Props> = ({}) => {
   };
 
   return (
-    <>
+    <div>
+      <div className="p-4">
+        <TecherME_Logo />
+      </div>
       <div className="flex flex-col items-center my-5">
-        <Button color="primary" variant="contained">
+        <Button
+          className="py-1 px-10 text-xl "
+          color="secondary"
+          variant="outlined"
+        >
           イベント登録
         </Button>
         <div className="my-5 w-full flex flex-col items-center">
@@ -177,6 +185,6 @@ export const Top: React.FC<Props> = ({}) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
