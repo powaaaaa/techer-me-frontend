@@ -45,7 +45,7 @@ export const EditProfile: React.FC<Props> = ({}) => {
       />
       <Input name="github" value={"url"} />
 
-      <Twitter />
+      <p className="text-[32px]">X</p>
       <Input name="url" value={""} />
       <Image
         src={"/discord-mark-black.png"}
