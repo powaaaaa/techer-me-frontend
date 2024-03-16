@@ -1,9 +1,9 @@
-import { EditProfilePage } from ".";
+import { TopPage } from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof EditProfilePage> = {
-  component: EditProfilePage,
+const meta: Meta<typeof TopPage> = {
+  component: TopPage,
   parameters: {
     layout: "centered",
   },
@@ -12,7 +12,7 @@ const meta: Meta<typeof EditProfilePage> = {
 
 export default meta;
 
-type Story = StoryObj<typeof EditProfilePage>;
+type Story = StoryObj<typeof TopPage>;
 
 export const Default: Story = {
   args: {},

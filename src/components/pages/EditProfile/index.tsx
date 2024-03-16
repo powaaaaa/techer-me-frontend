@@ -1,25 +1,28 @@
-import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
-import { Input } from "@/components/Input";
-import { TecherME_Logo } from "@/components/TecherME_Logo";
-import { Textarea } from "@/components/Textarea";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
+import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
+import { Textarea } from "@/components/ui/Textarea";
 import { Twitter } from "@/components/icons/twitterLogo";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {};
 
-export const EditProfile: React.FC<Props> = ({}) => {
+export const EditProfilePage: React.FC<Props> = ({}) => {
   return (
     <div className="p-1">
       <div className="flex gap-[38vw] ">
         <TecherME_Logo />
-        <Button
-          className="py-1 px-6 text-[8px] "
-          color="secondary"
-          variant="outlined"
-        >
-          管理者画面へ
-        </Button>
+        <Link href={"/top"}>
+          <Button
+            className="py-1 px-6 text-[8px] "
+            color="secondary"
+            variant="outlined"
+          >
+            topへ
+          </Button>
+        </Link>
       </div>
       <div className="py-5 text-[8px]">
         <p>●プロフィール詳細プレビュー</p>
@@ -45,7 +48,7 @@ export const EditProfile: React.FC<Props> = ({}) => {
       />
       <Input name="github" value={"url"} />
 
-      <Twitter />
+      <p className="text-[32px]">X</p>
       <Input name="url" value={""} />
       <Image
         src={"/discord-mark-black.png"}
