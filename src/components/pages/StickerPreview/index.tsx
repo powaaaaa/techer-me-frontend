@@ -4,6 +4,7 @@ import { TecherME_Logo } from "../../ui/TecherME_Logo";
 import { ArrowBack } from "../../icons/ArrowBack";
 import Link from "next/link";
 import { useStickerPreviewPage } from "./hooks";
+import { defaultProfile } from "../EditProfile";
 
 export const StickerPreviewPage: React.FC = ({}) => {
   const { userIcon } = useStickerPreviewPage();
@@ -25,7 +26,7 @@ export const StickerPreviewPage: React.FC = ({}) => {
           src={"https://avatars.githubusercontent.com/u/88587703?s=48&v=4"}
           alt={"userIcon"}
         />
-        <Card handleName={""} />
+        <Card profile={defaultProfile} />
       </div>
     </main>
   );
