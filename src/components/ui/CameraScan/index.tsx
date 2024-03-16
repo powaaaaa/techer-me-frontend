@@ -75,41 +75,41 @@ export const CameraScan: React.FC<Props> = ({ qrCode, setQrCode }) => {
     return () => clearInterval(intervalId);
   }, [videoRef]);
 
-  useEffect(() => {
-    async function exchangePost() {
-      if (qrCode !== "") {
-        try {
-          const token = await auth.currentUser?.getIdToken();
-          const tokenValue = await token;
-          const response = await fetch(
-            "https://server-u7kyixk36q-an.a.run.app/exchanges",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${tokenValue}`,
-              },
-              body: JSON.stringify({
-                event_id: "1",
-                user_id_1: auth.currentUser?.uid,
-                user_id_2: qrCode,
-              }),
-            }
-          );
-          if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-          }
-          const jsonData = await response.json();
-          console.log(jsonData);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      } else {
-        console.log("qrCode is not found");
-      }
-    }
-    exchangePost();
-  }, [qrCode]);
+  // useEffect(() => {
+  //   async function exchangePost() {
+  //     if (qrCode !== "") {
+  //       try {
+  //         const token = await auth.currentUser?.getIdToken();
+  //         const tokenValue = await token;
+  //         const response = await fetch(
+  //           "https://server-u7kyixk36q-an.a.run.app/exchanges",
+  //           {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //               Authorization: `Bearer ${tokenValue}`,
+  //             },
+  //             body: JSON.stringify({
+  //               event_id: "1",
+  //               user_id_1: auth.currentUser?.uid,
+  //               user_id_2: qrCode,
+  //             }),
+  //           }
+  //         );
+  //         if (!response.ok) {
+  //           throw new Error(`Error: ${response.status}`);
+  //         }
+  //         const jsonData = await response.json();
+  //         console.log(jsonData);
+  //       } catch (error) {
+  //         console.error("Error fetching data:", error);
+  //       }
+  //     } else {
+  //       console.log("qrCode is not found");
+  //     }
+  //   }
+  //   exchangePost();
+  // }, [qrCode]);
 
   return (
     <>
