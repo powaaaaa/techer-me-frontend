@@ -52,7 +52,7 @@ export const TopPage: React.FC = ({}) => {
 
         <Link
           className="flex flex-col items-center my-5"
-          href={`/qrExchange?event_id=`}
+          href={`/qrExchange?event_id=${search}`}
         >
           <Sticker src={userIcon} alt="test" />
         </Link>
