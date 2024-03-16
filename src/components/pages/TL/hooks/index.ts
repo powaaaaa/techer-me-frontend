@@ -1,5 +1,5 @@
-import { PostType } from "@/components/Post";
-import { useState } from "react";
+import { PostType } from "@/components/ui/Post";
+import { Dispatch, SetStateAction, useState } from "react";
 import { getAuth } from "firebase/auth";
 import {
   getDatabase,
@@ -15,6 +15,8 @@ import {
 type UseTLPage = {
   tlTitle: string;
   count: number;
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
   posts: PostType[];
   inputPost: PostType;
   isReplying: boolean;
@@ -62,6 +64,8 @@ export const useTLPage = ({
   countLimit: number;
 }): UseTLPage => {
   const [count, setCount] = useState(countLimit);
+  const [showModal, setShowModal] = useState(false);
+
   const [tlTitle, setTlTitle] = useState<string>("Hack U 2024 Osaka");
   //NOTE:  このdemoはbackendと繋げられたら消す
   const [posts, setPosts] = useState<PostType[]>(demo);
@@ -183,6 +187,8 @@ export const useTLPage = ({
   return {
     tlTitle,
     count,
+    showModal,
+    setShowModal,
     posts,
     inputPost,
     isReplying,

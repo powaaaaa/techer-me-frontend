@@ -1,7 +1,8 @@
-import { Button } from "@/components/Button";
-import { QRcode } from "@/components/QRcode";
-import { TecherME_Logo } from "@/components/TecherME_Logo";
+import { Button } from "@/components/ui/Button";
+import { QRcode } from "@/components/ui/QRcode";
+import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { useQRPage } from "./hooks";
+import Link from "next/link";
 
 export const QRPage: React.FC = ({}) => {
   const { PDFRef, eventName, eventQRCode, handleGoOwner } = useQRPage();
@@ -32,16 +33,16 @@ export const QRPage: React.FC = ({}) => {
           ● このQRコードをイベント開催時に参加者に読み取ってもらってください
         </p>
 
-        <div className="fixed bottom-4 right-5 ">
+        <Link className="fixed bottom-4 right-5" href={"/top"}>
           <Button
             color="secondary"
             variant="outlined"
             className="py-1 px-10 mx-auto"
             onClick={handleGoOwner}
           >
-            管理者画面へ
+            topへ戻る
           </Button>
-        </div>
+        </Link>
       </main>
     </div>
   );
