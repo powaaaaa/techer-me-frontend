@@ -1,4 +1,3 @@
-"use client";
 import { Sticker } from "@/components/ui/Sticker";
 import { StickerList } from "@/components/ui/StickerList";
 import { Button } from "@/components/ui/Button";

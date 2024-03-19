@@ -1,33 +1,20 @@
-type Props = {};
-
-type Event = {
-  Title: string;
-  EventId: string;
+type Props = {
+  events: Event[];
 };
 
-const events: Event[] = [
-  {
-    Title: "Event1",
-    EventId: "1",
-  },
-  {
-    Title: "Event2",
-    EventId: "2",
-  },
-  {
-    Title: "Event3",
-    EventId: "3",
-  },
-];
+type Event = {
+  title: string;
+  eventId: string;
+};
 
-export const Eventlist: React.FC<Props> = ({}) => {
+export const Eventlist: React.FC<Props> = ({ events }) => {
   return (
     <>
       <div className="flex flex-col items-start text-[16px] font-bold w-[100%]">
         <ul className="w-[100%]">
           {events.map((event) => (
             <a href="" className="w-[100%]">
-              <li className="w-[100%]">{event.Title}</li>
+              <li className="w-[100%]">{event.title}</li>
             </a>
           ))}
         </ul>

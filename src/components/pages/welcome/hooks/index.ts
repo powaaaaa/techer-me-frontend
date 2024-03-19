@@ -17,8 +17,6 @@ export const useWelcomePage = (): UseWelcomePage => {
   const handleLoginByGitHub = async () => {
     const provider = new GithubAuthProvider();
     await signInWithPopup(auth, provider);
-
-    console.log("GitHub認証");
     router.push(`/top`);
   };
 

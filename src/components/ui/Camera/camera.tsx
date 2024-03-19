@@ -1,8 +1,7 @@
-"use client";
 import { useEffect, useState, useRef } from "react";
 import jsQR from "jsqr";
 
-export const CameraScan: React.FC = ({}) =>  {
+export const CameraScan: React.FC = ({}) => {
   const videoRef: any = useRef(null);
   const canvasRef: any = useRef(null);
   const canvasContextRef: any = useRef(null);
@@ -68,18 +67,22 @@ export const CameraScan: React.FC = ({}) =>  {
   return (
     <>
       <div className=" flex justify-center items-center">
-        <video ref={videoRef} className=" h-[100%] -z-50" autoPlay playsInline/>
+        <video
+          ref={videoRef}
+          className=" h-[100%] -z-50"
+          autoPlay
+          playsInline
+        />
         <canvas
           ref={canvasRef}
           width="300px"
           height="300px"
           className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-solid border-[5px] border-black rounded-[4px]"
         />
-        
       </div>
       <div className="flex justify-center mt-[20px]">
         <p className="font-bold text-2xl">{qrCode}</p>
       </div>
     </>
   );
-}
+};

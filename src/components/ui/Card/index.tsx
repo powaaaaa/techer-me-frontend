@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Twitter } from "@/components/icons/twitterLogo";
 
 type ProfileType = {
   name: string;

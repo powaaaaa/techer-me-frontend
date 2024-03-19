@@ -1,4 +1,3 @@
-"use client";
 import { ComponentPropsWithoutRef } from "react";
 import { CheckMark } from "../../icons/CheckMark";
 

@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef, Dispatch } from "react";
 import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
