@@ -1,10 +1,7 @@
+import { Event } from "@/@types/ui";
+
 type Props = {
   events: Event[];
-};
-
-type Event = {
-  title: string;
-  eventId: string;
 };
 
 export const Eventlist: React.FC<Props> = ({ events }) => {

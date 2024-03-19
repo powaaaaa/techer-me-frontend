@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
-import { Techer, TecherType } from "@/components/ui/Techer";
+import { Techer } from "@/components/ui/Techer";
+import { TecherType } from "@/@types/ui";
 
 type Props = {
   techers: TecherType[];

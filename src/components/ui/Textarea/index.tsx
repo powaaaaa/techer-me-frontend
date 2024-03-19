@@ -1,4 +1,3 @@
-"use client";
 import { TextareaHTMLAttributes } from "react";
 import { useState } from "react";
 import styles from "./index.module.css";

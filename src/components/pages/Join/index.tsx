@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/Button";
 import { Sticker } from "@/components/ui/Sticker";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
@@ -9,16 +8,7 @@ import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
-
-type eventData = {
-  event_id: string;
-  finished_at: string;
-  image_url: string;
-  message: string;
-  name: string;
-  owner_id: string;
-  started_at: string;
-};
+import { eventData } from "@/@types/pages";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

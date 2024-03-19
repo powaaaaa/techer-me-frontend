@@ -1,5 +1,6 @@
 import { MouseEvent } from "react";
-import { Post, PostType } from "@/components/ui/Post";
+import { Post } from "@/components/ui/Post";
+import { PostType } from "@/@types/ui";
 
 type Props = {
   posts: PostType[];

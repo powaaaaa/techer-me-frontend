@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { ImageIcon } from "@/components/icons/ImageIcon";
 import { SendIcon } from "../../icons/SendIcon";
-import { PostType } from "../Post";
+import { PostType } from "@/@types/ui";
 
 type Props = {
   countLimit: number;

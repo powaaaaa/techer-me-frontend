@@ -1,6 +1,4 @@
-"use client";
 import React, { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/Button";
 import { PostInput } from "@/components/ui/PostInput";
 import { PostList } from "@/components/ui/PostList";
@@ -8,7 +6,6 @@ import { ArrowBack } from "@/components/icons/ArrowBack";
 import { useTLPage } from "./hooks";
 import { PostReplyBox } from "@/components/ui/PostReplyBox";
 import { getDatabase, onValue, ref, set } from "firebase/database";
-import { PostType } from "@/components/ui/Post";
 import { Modal } from "@/components/ui/Modal";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

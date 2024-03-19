@@ -1,11 +1,9 @@
-"use client";
 import { Button } from "@/components/ui/Button";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { Sticker } from "@/components/ui/Sticker";
 import { TecherME_Logo } from "@/components/ui/TecherME_Logo";
 import { Textarea } from "@/components/ui/Textarea";
 import { ArrowBack } from "@/components/icons/ArrowBack";
-import { useOwnerPage } from "./hooks";
 import { EventInfoType } from "../Join/hooks";
 import { Input } from "@/components/ui/Input";
 import { Datetime } from "@/components/ui/Datetime";

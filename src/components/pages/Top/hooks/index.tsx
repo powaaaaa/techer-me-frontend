@@ -1,35 +1,10 @@
-import { TecherType } from "@/components/ui/Techer";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { firebaseConfig } from "@/lib/firebase/firebase";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-
-export type ExchangeType = {
-  image_url: string;
-  message: string;
-  name: string;
-  skills: {
-    [key: string]: string;
-  };
-  times: number;
-  urls: {
-    [key: string]: string;
-  };
-  user_id: string;
-};
-
-export type StickerType = {
-  image_url: "string";
-  user_id: "string";
-  x: 0;
-  y: 0;
-};
-
-export type GetExchangeType = {
-  exchanges: ExchangeType[];
-  stickers: StickerType[];
-};
+import { TecherType } from "@/@types/ui";
+import { GetExchangeType } from "@/@types/pages";
 
 type UseTopPage = {
   userIcon: string;

@@ -3,13 +3,6 @@ import { cva } from "class-variance-authority";
 import clsx from "clsx";
 import { ComponentPropsWithoutRef } from "react";
 
-export type TecherType = {
-  id: string;
-  image: string;
-  name: string;
-  times: number;
-};
-
 type Props = {
   src: string;
   times?: number;

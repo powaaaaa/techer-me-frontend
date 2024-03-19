@@ -1,17 +1,8 @@
-"use client";
 import { ArrowUndo } from "@/components/icons/ArrowUndo";
 import { ComponentPropsWithoutRef, useEffect, useState } from "react";
 import { getDatabase, ref, query, get } from "firebase/database";
 import { getAuth } from "firebase/auth";
-
-export type PostType = {
-  id: string;
-  date: string;
-  time: string;
-  content: string;
-  reply?: number;
-  image?: string[];
-};
+import { PostType } from "@/@types/ui";
 
 type Props = {
   post: PostType;

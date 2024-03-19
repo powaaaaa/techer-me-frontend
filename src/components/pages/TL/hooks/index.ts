@@ -1,4 +1,3 @@
-import { PostType } from "@/components/ui/Post";
 import { Dispatch, SetStateAction, useState } from "react";
 import { getAuth } from "firebase/auth";
 import {
@@ -11,6 +10,7 @@ import {
   onValue,
   set,
 } from "firebase/database";
+import { PostType } from "@/@types/ui";
 
 type UseTLPage = {
   tlTitle: string;

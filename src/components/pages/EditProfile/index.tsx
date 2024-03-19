@@ -1,3 +1,4 @@
+import { InputProfile, PostMeType, getMeType } from "@/@types/pages";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
@@ -9,53 +10,6 @@ import { getAuth } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-type InputProfile = {
-  name: string;
-  // organaize: string;
-  github: string;
-  url: string;
-  discord: string;
-  message: string;
-};
-
-type Event = {
-  event_id: string;
-  finished_at: string;
-  image_url: string;
-  message: string;
-  name: string;
-  owner_id: string;
-  started_at: string;
-};
-
-type Skills = {
-  [key: string]: string;
-};
-
-type Urls = {
-  [key: string]: string;
-};
-
-type getMeType = {
-  events: Event[];
-  image_url: string;
-  // is_organizer: boolean;
-  message: string;
-  name: string;
-  skills: Skills;
-  urls: Urls;
-  user_id: string;
-};
-
-type PostMeType = {
-  image_url: string;
-  is_organizer: string;
-  message: string;
-  name: string;
-  skills: Skills;
-  urls: Urls;
-};
 
 export const defaultProfile: InputProfile = {
   name: "",
